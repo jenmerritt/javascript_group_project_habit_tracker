@@ -6,7 +6,7 @@
         <button v-on:click="editHabit">Click to edit</button>
       </div>
       <div class="habit-points">
-        <button v-on:click="updateTimesAchieved">Adjust Score</button>
+        <button v-if="!habit.timeStamp" v-on:click="updateTimesAchieved">Adjust Score</button>
       </div>
     </div>
   </li>
