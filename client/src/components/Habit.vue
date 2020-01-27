@@ -3,6 +3,7 @@
     <div class="habit-item-wrapper">
       <div class="habit-name">
         <p>{{ habit.name }}</p>
+        <p>Achieved: {{habit.timeStamp}}</p>
         <button v-on:click="editHabit">Click to edit</button>
       </div>
       <div class="habit-points">
@@ -27,7 +28,7 @@ export default {
     },
     updateTimesAchieved(){
       this.habit.timesAchieved += 1
-      this.habit.timeStamp = this.moment()
+      this.habit.timeStamp = this.moment().format('MMMM Do YYYY, h:mm:ss a')
       HabitService.putHabit(this.habit)
       .then( () => eventBus.$emit('habit-updated', this.habit))
     },
