@@ -1,9 +1,9 @@
 <template lang="html">
-  <div>
+  <li class="habit-item">
     <p>{{ habit.name }}</p>
     <button v-on:click="updateTimesAchieved">Adjust Score</button>
     <button v-on:click="editHabit">Click to edit</button>
-  </div>
+  </li>
 </template>
 
 <script>
@@ -27,4 +27,9 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.habit-item {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
 </style>

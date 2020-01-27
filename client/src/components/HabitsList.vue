@@ -1,6 +1,6 @@
 <template lang="html">
-  <div>
-    <ul>
+  <div id="habits-wrapper">
+    <ul id="habit-list">
       <habit v-for="habit in habits" :habit="habit"></habit>
     </ul>
   </div>
@@ -44,4 +44,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
+#habit-list {
+  margin: 0 auto;
+  list-style-type: none;
+}
 </style>
