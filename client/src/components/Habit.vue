@@ -15,15 +15,21 @@
 <script>
 import { eventBus } from "@/main";
 import HabitService from "../services/HabitService.js";
+import moment from 'moment';
+
 
 export default {
   name: 'habit',
   props: ['habit'],
   methods:{
+    moment() {
+      return moment();
+    },
     updateTimesAchieved(){
       this.habit.timesAchieved += 1
+      this.habit.timeStamp = this.moment()
       HabitService.putHabit(this.habit)
-      .then( () => eventBus.$emit('habit-updated', this.habit));
+      .then( () => eventBus.$emit('habit-updated', this.habit))
     },
     editHabit(){
       eventBus.$emit('edit-habit', this.habit)
