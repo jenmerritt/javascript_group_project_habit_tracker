@@ -5,16 +5,19 @@ db.habits.insertMany([
   {
     name: "Drink 3l Water",
     points: 20,
-    timesAchieved: 0
+    timesAchieved: 0,
+    timeStamps: []
   },
   {
     name: "Walk To Work",
     points: 25,
-    timesAchieved: 2
+    timesAchieved: 2,
+    timeStamps: []
   },
   {
     name: "Buy Takeaway For Dinner",
     points: -15,
-    timesAchieved: 3
+    timesAchieved: 3,
+    timeStamps: []
   }
 ]);
