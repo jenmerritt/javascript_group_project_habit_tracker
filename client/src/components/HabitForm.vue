@@ -30,7 +30,8 @@ export default {
       name: null,
       type: null,
       points: null,
-      timesAchieved: 0
+      timesAchieved: 0,
+      timeStamps: []
     }
   },
   methods: {

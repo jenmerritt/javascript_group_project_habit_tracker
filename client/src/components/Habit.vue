@@ -3,11 +3,11 @@
     <div class="habit-item-wrapper">
       <div class="habit-name">
         <p>{{ habit.name }}</p>
-        <p v-if="habit.timeStamp" >Achieved: {{habit.timeStamp}}</p>
+        <p v-if="!habit.timeStamps.length == 0" >Achieved: {{habit.timeStamps[0]}}</p>
         <button v-on:click="editHabit">Click to edit</button>
       </div>
       <div class="habit-points">
-        <button v-if="!habit.timeStamp" v-on:click="updateTimesAchieved">Adjust Score</button>
+        <button v-if="!sameDay()" v-on:click="updateTimesAchieved">Adjust Score</button>
       </div>
     </div>
   </li>
@@ -26,9 +26,13 @@ export default {
     moment() {
       return moment();
     },
+    sameDay() {
+      const daysAchieved = this.habit.timeStamps.filter(day => day == this.moment().format('DD-MM-YYYY'))
+      return daysAchieved.length
+    },
     updateTimesAchieved(){
       this.habit.timesAchieved += 1
-      this.habit.timeStamp = this.moment().format('MMMM Do YYYY, h:mm:ss a')
+      this.habit.timeStamps.push(this.moment().format('DD-MM-YYYY'))
       HabitService.putHabit(this.habit)
       .then( () => eventBus.$emit('habit-updated', this.habit))
     },
