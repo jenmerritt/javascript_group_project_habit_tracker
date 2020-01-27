@@ -3,7 +3,7 @@
     <div class="habit-item-wrapper">
       <div class="habit-name">
         <p>{{ habit.name }}</p>
-        <p>Achieved: {{habit.timeStamp}}</p>
+        <p v-if="habit.timeStamp" >Achieved: {{habit.timeStamp}}</p>
         <button v-on:click="editHabit">Click to edit</button>
       </div>
       <div class="habit-points">
