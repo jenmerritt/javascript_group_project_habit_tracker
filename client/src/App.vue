@@ -4,7 +4,8 @@
     <div id="header">
       <div id="score">
         <h1>Score:</h1>
-        <h1>{{this.pointsTotal}}</h1>
+        <h1>{{this.score}}</h1>
+        <h1>{{this.levelTotal}}</h1>
       </div>
       <div id="right-column">
         <h1>Nav (and app name)</h1>
@@ -30,9 +31,18 @@ export default {
   name: 'app',
   data(){
     return{
-      pointsTotal: 0
+      pointsTotal: 0,
+      levelTotal: 0
     }
+
   },
+watch: {
+  pointsTotal: function() {
+    this.levelTotal = Math.floor(this.pointsTotal / 100)
+  }
+},
+
+
   computed:{
     score(){
       return this.pointsTotal
@@ -49,6 +59,7 @@ export default {
       habits.forEach(habit => total += (habit.points * habit.timesAchieved))
       this.pointsTotal = total;
     })
+
 
   }
 }
