@@ -1,8 +1,14 @@
 <template lang="html">
   <li class="habit-item">
-    <p>{{ habit.name }}</p>
-    <button v-on:click="updateTimesAchieved">Adjust Score</button>
-    <button v-on:click="editHabit">Click to edit</button>
+    <div class="habit-item-wrapper">
+      <div class="habit-name">
+        <p>{{ habit.name }}</p>
+        <button v-on:click="editHabit">Click to edit</button>
+      </div>
+      <div class="habit-points">
+        <button v-on:click="updateTimesAchieved">Adjust Score</button>
+      </div>
+    </div>
   </li>
 </template>
 
@@ -30,6 +36,20 @@ export default {
 .habit-item {
   display: inline-block;
   width: 100%;
+  /* max-width: 300px; */
   text-align: center;
+  margin: 30px 0 0 0;
 }
+
+.habit-item-wrapper {
+  display: flex;
+  width: 100%;
+  padding: 30px;
+  background-color: #F5F5F5
+}
+
+.habit-name {
+  width: 70%;
+}
+
 </style>
