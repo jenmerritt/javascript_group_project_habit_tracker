@@ -44,9 +44,11 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
 #habit-list {
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 700px;
   list-style-type: none;
 }
+
 </style>

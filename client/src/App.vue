@@ -2,14 +2,26 @@
 
   <div id="app">
     <div id="header">
-      <div id="score">
-        <h1>Score:</h1>
-        <h1>{{this.score}}</h1>
-        <h1>{{this.levelTotal}}</h1>
+      <div id="header-left">
+        <div id="score">
+          <h1>{{this.score}}</h1>
+          <p>POINTS</p>
+        </div>
+        <div id="level">
+          <h1>LEVEL: {{this.levelTotal}}</h1>
+        </div>
       </div>
-      <div id="right-column">
+      <div id="header-right">
         <h1>Nav (and app name)</h1>
         <h1>User Info</h1>
+      </div>
+    </div>
+    <div id="heading-block">
+      <div id="heading-block-left">
+        <h1>YOUR HABITS</h1>
+      </div>
+      <div id="heading-block-right">
+        <button id="add-new-button">ADD NEW</button>
       </div>
     </div>
     <div id="main-wrapper">
@@ -65,37 +77,105 @@ watch: {
 }
 </script>
 
-<style lang="css" scoped>
-  #app {
-    font-family: 'Play', sans-serif;
-    background-color: #1f60a6;
-    color: #FFF;
-  }
+<style lang="css">
 
-  #header {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    min-height: 200px;
-    vertical-align: middle;
-    background-color: #003063;
-  }
+body{
+  margin: 0;
+  padding: 0;
+  background-color: #0a1832;
+}
 
-  #score {
-    width: 30%;
-    border: 8px solid #33CCFF;
-    padding: 25px;
-  }
+#app {
+  font-family: 'Play', sans-serif;
+  background-color: #0a1832;
+  color: #FFF;
+  margin: 0 auto;
+}
 
-  #score h1 {
-    text-align: center;
-    font-size: 80px;
-    color: #33CCFF;
-    margin: 10px;
-  }
+#header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 50px;
+  background-color: #003063;
+}
 
-  #right-column {
-    padding: 20px;
-  }
+#header-left {
+  width: 30%;
+  padding: 25px;
+  display:flex;
+  flex-direction: column;
+  background-color: #08bdc6;
+}
+
+#score{
+  text-align: center;
+}
+
+#score h1 {
+  font-size: 6vw;
+  color: #ffffff;
+  margin: 0px;
+}
+
+#score p{
+  margin: 0;
+}
+
+#level{
+  text-align:center;
+}
+
+#header-right {
+  width: 70%;
+  padding: 20px;
+  text-align: right;
+}
+
+#heading-block{
+  height:120px;
+  width: 100%;
+  text-align: center;
+  background-color: #123e7b;
+  display:flex;
+  flex-direction: row;
+}
+
+#heading-block-left{
+  width: 50%;
+  text-align: center;
+  padding: 25px;
+}
+
+#heading-block-left h1{
+  font-size: 40px;
+  margin: 0;
+}
+
+#heading-block-right{
+  width: 50%;
+  text-align: center;
+  padding: 25px;
+}
+
+#add-new-button{
+  background-color: #8AC926;
+  padding:20px;
+  width:150px;
+  border: none;
+  font-size: 20px;
+  color: green;
+}
+
+#add-new-button:hover{
+  background-color: #8AC926;
+  padding:17px;
+  width:150px;
+  border: none;
+  font-size: 20px;
+  color: green;
+  cursor: pointer;
+  border: 3px solid green;
+}
 
 </style>

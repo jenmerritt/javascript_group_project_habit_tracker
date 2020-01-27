@@ -1,22 +1,24 @@
 <template lang="html">
-  <form class="habit-form" v-on:submit="addHabit">
-    <h2>Add Habit</h2>
-    <label for="name">Habit Name: </label>
-    <input type="text" v-model="name" id="name"/>
-
-    <label for="type">Habit Type</label>
-    <input type="radio" name="type" value="positive" v-model="type"/>Positive
-    <br>
-    <input type="radio" name="type" value="negative" v-model="type"/>Negative
-    <br>
-
-    <label for="points">Assigned Points</label>
-    <input type="number" name="points" v-model="points"/>
-
-
-    <input type="submit" value="Add Habit!">
-  </form>
-
+  <div id="habit-form-wrapper">
+    <form class="habit-form" v-on:submit="addHabit">
+      <h1>Add Habit</h1>
+      <div class="form-item-wrapper">
+        <input type="text" v-model="name" id="name" placeholder="Enter Habit Name...."/>
+      </div>
+      <div class="form-item-wrapper">
+        <label for="type">Is Your Habit:</label>
+        <br/>
+        <input type="radio" name="type" value="positive" v-model="type"/><span class="radio-title">Positive</span>
+        <input type="radio" name="type" value="negative" v-model="type"/><span class="radio-title">Negative</span>
+      </div>
+      <div class="form-item-wrapper">
+        <label for="points">Assign Points:</label>
+        <br/>
+        <input type="number" name="points" v-model="points"/>
+      </div>
+      <input type="submit" value="Save">
+    </form>
+  </div>
 </template>
 
 <script>
@@ -50,13 +52,82 @@ export default {
       HabitService.postHabit(payload)
       .then(habit => eventBus.$emit('habit-added', habit))
 
+      this.name = null;
+      this.type = null;
+      this.points = null;
+      this.timesAchieved = 0;
     }
 
   }
 
 }
+</script>
 
-  </script>
+<style lang="css" scoped>
 
-  <style lang="css" scoped>
-  </style>
+#habit-form-wrapper{
+  margin-bottom:50px;
+}
+
+.form-item-wrapper {
+  margin-bottom: 10px;
+}
+
+.habit-form {
+  width: 65%;
+  margin: 0 auto;
+  margin-top:20px;
+  background-color: #113e7a;
+  padding: 20px 20px 40px 20px;
+  text-align: center;
+}
+
+label {
+  min-width: 100px;
+  display: inline-block;
+  font-size: 22px;
+  padding: 15px 0 15px 0;
+}
+
+input[type=text]{
+  font-family:inherit;
+  height: 30px;
+  width: 70%;
+  font-size: 22px;
+}
+
+input[type=number]{
+  font-family:inherit;
+  height: 30px;
+  width: 80px;
+  font-size: 22px;
+}
+
+input[type=submit]{
+  background-color: #8AC926;
+  padding:10px;
+  width:150px;
+  border: none;
+  font-size: 20px;
+  color: green;
+  margin-top: 25px;
+}
+
+input[type=submit]:hover{
+  background-color: #8AC926;
+  padding:7px;
+  width:150px;
+  border: none;
+  font-size: 20px;
+  color: green;
+  cursor: pointer;
+  border: 3px solid green;
+  margin-top: 25px;
+}
+
+.radio-title{
+  font-size: 22px;
+  padding: 0 15px 0 15px;
+}
+
+</style>
