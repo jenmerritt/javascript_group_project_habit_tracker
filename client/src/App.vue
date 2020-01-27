@@ -1,10 +1,20 @@
 <template lang="html">
 
   <div id="app">
-    <h1>{{this.pointsTotal}}</h1>
-    <habits-list />
-    <habit-form />
-    <habit-update-form />
+    <div id="header">
+      <div id="left-column">
+        <h1>{{this.pointsTotal}}</h1>
+      </div>
+      <div id="right-column">
+        <h1>Nav</h1>
+        <h1>User Info</h1>
+      </div>
+    </div>
+    <div id="main-wrapper">
+      <habits-list />
+      <habit-form />
+      <habit-update-form />
+    </div>
   </div>
 
 </template>
@@ -44,4 +54,18 @@ export default {
 </script>
 
 <style lang="css" scoped>
+  #app {
+    font-family: 'Play', sans-serif;
+  }
+
+  #header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  #left-column {
+    width: 40%;
+  }
+
 </style>
