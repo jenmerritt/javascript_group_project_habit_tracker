@@ -1,7 +1,8 @@
 <template lang="html">
 
   <div id="app">
-    <h1>{{this.pointsTotal}}</h1>
+    <h1>{{this.score}}</h1>
+    <h1>{{this.levelTotal}}</h1>
     <habits-list />
     <habit-form />
     <habit-update-form />
@@ -19,9 +20,18 @@ export default {
   name: 'app',
   data(){
     return{
-      pointsTotal: 0
+      pointsTotal: 0,
+      levelTotal: 0
     }
+
   },
+watch: {
+  pointsTotal: function() {
+    this.levelTotal = Math.floor(this.pointsTotal / 100)
+  }
+},
+
+
   computed:{
     score(){
       return this.pointsTotal
@@ -38,6 +48,7 @@ export default {
       habits.forEach(habit => total += (habit.points * habit.timesAchieved))
       this.pointsTotal = total;
     })
+
 
   }
 }
