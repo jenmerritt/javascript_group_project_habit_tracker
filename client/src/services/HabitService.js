@@ -14,6 +14,15 @@ export default {
       headers: {'Content-Type': 'application/json'}
     })
     .then(res => res.json())
+  },
+
+  postHabit(habit){
+    return fetch(baseURL, {
+      method: 'POST',
+      body: JSON.stringify(habit),
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(res => res.json())
   }
 
 }

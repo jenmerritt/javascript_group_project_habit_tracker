@@ -27,7 +27,10 @@ export default {
 
     eventBus.$on('habit-updated', (id) =>{
       this.fetchHabits();
-  })
+    })
+    
+    eventBus.$on('habit-added', habit => this.habits.push(habit))
+
 
   },
   methods: {
