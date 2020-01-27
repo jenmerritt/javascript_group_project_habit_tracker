@@ -20,6 +20,11 @@ export default {
       pointsTotal: 0
     }
   },
+  computed:{
+    score(){
+      return this.pointsTotal
+    }
+  },
   components: {
     'habits-list': HabitsList,
     'habit-form': HabitForm
@@ -31,7 +36,6 @@ export default {
       this.pointsTotal = total;
     })
 
-    // get each habit points and times clicked. Multiply points by times clicked and add all habits together.
   }
 }
 </script>

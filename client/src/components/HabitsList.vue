@@ -25,6 +25,10 @@ export default {
 
     this.fetchHabits();
 
+    eventBus.$on('habit-updated', (id) =>{
+      this.fetchHabits();
+  })
+
   },
   methods: {
     fetchHabits() {
