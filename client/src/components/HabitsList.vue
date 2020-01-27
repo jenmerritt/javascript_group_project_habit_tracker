@@ -25,10 +25,10 @@ export default {
 
     this.fetchHabits();
 
-    eventBus.$on('habit-updated', (id) =>{
+    eventBus.$on('habit-updated', () =>{
       this.fetchHabits();
     })
-    
+
     eventBus.$on('habit-added', habit => this.habits.push(habit))
 
 

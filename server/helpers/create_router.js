@@ -60,6 +60,7 @@ const createRouter = function (collection) {
     const id = req.params.id;
     const updatedData = req.body;
     delete updatedData._id;
+    console.log(id);
     collection
     .findOneAndUpdate(
       { _id: ObjectID(id)},

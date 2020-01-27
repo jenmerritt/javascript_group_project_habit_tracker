@@ -4,6 +4,7 @@
     <h1>{{this.pointsTotal}}</h1>
     <habits-list />
     <habit-form />
+    <habit-update-form />
   </div>
 
 </template>
@@ -11,6 +12,7 @@
 <script>
 import HabitForm from "@/components/HabitForm";
 import HabitsList from "@/components/HabitsList";
+import HabitUpdateForm from "@/components/HabitUpdateForm";
 import { eventBus } from "@/main";
 
 export default {
@@ -27,7 +29,8 @@ export default {
   },
   components: {
     'habits-list': HabitsList,
-    'habit-form': HabitForm
+    'habit-form': HabitForm,
+    'habit-update-form': HabitUpdateForm
   },
   mounted() {
     eventBus.$on('habits', habits => {

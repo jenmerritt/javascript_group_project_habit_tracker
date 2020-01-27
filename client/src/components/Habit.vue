@@ -2,6 +2,7 @@
   <div>
     <p>{{ habit.name }}</p>
     <button v-on:click="updateTimesAchieved">Adjust Score</button>
+    <button v-on:click="editHabit">Click to edit</button>
   </div>
 </template>
 
@@ -17,6 +18,9 @@ export default {
       this.habit.timesAchieved += 1
       HabitService.putHabit(this.habit)
       .then( () => eventBus.$emit('habit-updated', this.habit));
+    },
+    editHabit(){
+      eventBus.$emit('edit-habit', this.habit)
     }
   }
 }
