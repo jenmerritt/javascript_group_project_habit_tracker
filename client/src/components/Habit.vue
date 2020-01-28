@@ -6,7 +6,7 @@
       </div>
       <div v-if="checkAllowedInPeriod()">
         <h3 v-if="!habit.timeStamps.length == 0" class="habit-achieved">Achieved!</h3>
-        <h2 class="habit-timestamp">{{habit.timeStamps[habit.timeStamps.length-1]}}</h2>
+        <h2 class="habit-timestamp">{{latestTimestamp()}}</h2>
       </div>
       <div v-if="!checkAllowedInPeriod()" class="habit-points">
         <button v-on:click="updateTimesAchieved" id="adjust-score-button">Adjust Score Icon</button>
@@ -47,8 +47,11 @@ export default {
         return daysAchieved.length
       }
     },
-
-
+    latestTimestamp() {
+      const lastTimestamp = this.habit.timeStamps[this.habit.timeStamps.length-1]
+      const prettyTimestamp = new Date(lastTimestamp).toDateString()
+      return prettyTimestamp
+    },
     updateTimesAchieved(){
       this.habit.timesAchieved += 1
       this.habit.timeStamps.push(new Date(this.moment()))
