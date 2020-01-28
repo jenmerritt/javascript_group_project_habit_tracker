@@ -21,19 +21,26 @@ export default {
       habits: []
     }
   },
+  watch: {
+    habits() {
+      this.fetchHabits();
+    }
+  },
   mounted(){
 
     this.fetchHabits();
 
-    eventBus.$on('habit-updated', () =>{
+    eventBus.$on('habit-updated', id => {
       this.fetchHabits();
     })
 
-    eventBus.$on('habit-added', habit => this.habits.push(habit))
+    eventBus.$on('habit-added', habit => {
+      this.habits.push(habit)
+    })
 
     eventBus.$on('delete-habit', id => {
       const index = this.habits.findIndex(habit => habit._id === id);
-      this.habits.splice(index, 1);
+      this.habits.splice(index, 1)
     })
   },
   methods: {

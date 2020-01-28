@@ -73,8 +73,6 @@ export default {
       habits.forEach(habit => total += (habit.points * habit.timeStamps.length))
       this.pointsTotal = total;
     })
-
-
   }
 }
 </script>

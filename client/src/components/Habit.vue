@@ -56,7 +56,7 @@ export default {
     updateTimeStamps(){
       this.habit.timeStamps.push(new Date(this.moment()))
       HabitService.putHabit(this.habit)
-      .then( () => eventBus.$emit('habit-updated', this.habit))
+      .then( () => eventBus.$emit('habit-updated', this.habit._id))
       window.scrollTo(0,0);
     },
     editHabit(){
