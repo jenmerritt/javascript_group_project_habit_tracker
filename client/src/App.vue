@@ -31,7 +31,7 @@
     </div>
     <div id="rewards-wrapper">
       <a name="rewards"><rewards-list /></a>
-      <reward-form/>
+      <reward-form v-if="rewardsFormVisible" />
     </div>
   </div>
 
@@ -50,7 +50,8 @@ export default {
   data(){
     return{
       pointsTotal: 0,
-      level: 0
+      level: 0,
+      rewardsFormVisible: false
     }
 
   },
@@ -81,6 +82,7 @@ export default {
       habits.forEach(habit => total += (habit.points * habit.timeStamps.length))
       this.pointsTotal = total;
     })
+
   }
 }
 </script>

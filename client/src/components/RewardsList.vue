@@ -21,6 +21,7 @@ export default {
       rewards: []
     }
   },
+  props: ['rewardsFormVisible'],
   mounted() {
 
     this.fetchRewards()
@@ -35,11 +36,19 @@ export default {
     })
   },
   methods: {
+
     fetchRewards() {
       RewardService.getRewards()
       .then(rewards => this.rewards = rewards)
     }
+
+    // makeRewardsFormVisible() {
+    //   rewardsFormVisible = true
+    //   eventBus.$emit('make-rewards-form-visible', rewardsFormVisible)
+    // }
+
   },
+
   components: {
     'reward': Reward
   }
