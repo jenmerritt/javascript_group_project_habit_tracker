@@ -27,6 +27,9 @@ export default {
 
     eventBus.$on('reward-added', reward => this.rewards.push(reward))
 
+    eventBus.$on('reward-updated', id => {
+      this.fetchRewards();
+    })
 
     eventBus.$on("reward-deleted", (id) => {
       RewardService.deleteReward(id)

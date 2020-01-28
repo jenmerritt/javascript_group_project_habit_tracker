@@ -1,7 +1,7 @@
 <template lang="html">
   <li class="reward-item">
     <div class="reward-item-wrapper">
-      <div class="reward-name">
+      <div v-on:click="editReward" class="reward-name">
         <h2>{{ reward.name }}</h2>
       </div>
       <div class="delete-button-wrapper">
@@ -21,7 +21,10 @@ export default {
   methods:  {
     handleDelete() {
       eventBus.$emit("reward-deleted", this.reward._id)
-    }
+    },
+    editReward(){
+      eventBus.$emit('edit-reward', this.reward)
+    },
   }
 }
 </script>
