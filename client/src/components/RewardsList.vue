@@ -1,13 +1,13 @@
 <template lang="html">
-  <!-- <div id="rewards-wrapper">
+  <div id="rewards-wrapper">
     <ul id="reward-list">
       <reward v-for="reward in rewards" :reward="reward"></reward>
     </ul>
-  </div> -->
+  </div>
 </template>
 
 <script>
-// import Reward from "@/components/Reward";
+import Reward from "@/components/Reward";
 import RewardService from "../services/RewardService.js";
 import { eventBus } from "@/main";
 
@@ -27,6 +27,9 @@ export default {
       RewardService.getRewards()
       .then(rewards => this.rewards = rewards)
     }
+  },
+  components: {
+    'reward': Reward
   }
 }
 </script>
