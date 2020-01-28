@@ -7,7 +7,7 @@
         <button v-on:click="editHabit">Click to edit</button>
       </div>
       <div class="habit-points">
-        <button v-if="!sameDay()" v-on:click="updateTimesAchieved">Adjust Score</button>
+        <button v-if="!sameMonth()" v-on:click="updateTimesAchieved">Adjust Score</button>
       </div>
     </div>
   </li>
@@ -30,37 +30,42 @@ export default {
       const daysAchieved = this.habit.timeStamps.filter(day => day == this.moment().format('DD-MM-YYYY'))
       return daysAchieved.length
     },
-    updateTimesAchieved(){
-      this.habit.timesAchieved += 1
-      this.habit.timeStamps.push(this.moment().format('DD-MM-YYYY'))
-      HabitService.putHabit(this.habit)
-      .then( () => eventBus.$emit('habit-updated', this.habit))
-    },
-    editHabit(){
-      eventBus.$emit('edit-habit', this.habit)
+    sameMonth() {
+      const today = this.moment().format('DD-MM-YYYY')
+      const daysAchieved = this.habit.timeStamps.filter(day => day[3] == today[3] && day[4] == today[4])
+        return daysAchieved.length
+      },
+      updateTimesAchieved(){
+        this.habit.timesAchieved += 1
+        this.habit.timeStamps.push(this.moment().format('DD-MM-YYYY'))
+        HabitService.putHabit(this.habit)
+        .then( () => eventBus.$emit('habit-updated', this.habit))
+      },
+      editHabit(){
+        eventBus.$emit('edit-habit', this.habit)
+      }
     }
   }
-}
-</script>
+  </script>
 
-<style lang="css" scoped>
-.habit-item {
-  display: inline-block;
-  width: 100%;
-  /* max-width: 300px; */
-  text-align: center;
-  margin: 30px 0 0 0;
-}
+  <style lang="css" scoped>
+    .habit-item {
+      display: inline-block;
+      width: 100%;
+      /* max-width: 300px; */
+      text-align: center;
+      margin: 30px 0 0 0;
+    }
 
-.habit-item-wrapper {
-  display: flex;
-  width: 100%;
-  padding: 30px;
-  background-color: #F5F5F5
-}
+    .habit-item-wrapper {
+      display: flex;
+      width: 100%;
+      padding: 30px;
+      background-color: #F5F5F5
+    }
 
-.habit-name {
-  width: 70%;
-}
+    .habit-name {
+      width: 70%;
+    }
 
-</style>
+  </style>
