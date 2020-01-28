@@ -12,6 +12,13 @@
         <input type="radio" name="type" value="negative" v-model="type"/><span class="radio-title">Negative</span>
       </div>
       <div class="form-item-wrapper">
+        <label for="type">Set Time Period:</label>
+        <br/>
+        <input type="radio" name="period" value="Daily" v-model="period"/><span class="radio-title">Daily</span>
+        <input type="radio" name="period" value="Weekly" v-model="period"/><span class="radio-title">Weekly</span>
+        <input type="radio" name="period" value="Monthly" v-model="period"/><span class="radio-title">Monthly</span>
+      </div>
+      <div class="form-item-wrapper">
         <label for="points">Assign Points:</label>
         <br/>
         <input type="number" name="points" v-model="points"/>
@@ -33,7 +40,8 @@ export default {
       type: null,
       points: null,
       timesAchieved: 0,
-      timeStamps: []
+      timeStamps: [],
+      period: null
     }
   },
   methods: {
@@ -48,7 +56,8 @@ export default {
         name: this.name,
         points: this.points,
         timesAchieved: this.timesAchieved,
-        timeStamps: []
+        timeStamps: [],
+        period: this.period
       }
 
       HabitService.postHabit(payload)
@@ -58,6 +67,7 @@ export default {
       this.type = null;
       this.points = null;
       this.timesAchieved = 0;
+      this.period = null
     }
 
   }

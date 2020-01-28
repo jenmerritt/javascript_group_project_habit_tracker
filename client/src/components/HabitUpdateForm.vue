@@ -11,6 +11,13 @@
         <input type="radio" name="type" value="positive" v-model="type"/><span class="radio-title">Positive</span>
         <input type="radio" name="type" value="negative" v-model="type"/><span class="radio-title">Negative</span>
       </div>
+      <div class="form-item-wrapper">
+        <label for="type">Set Time Period:</label>
+        <br/>
+        <input type="radio" name="period" value="Daily" v-model="period"/><span class="radio-title">Daily</span>
+        <input type="radio" name="period" value="Weekly" v-model="period"/><span class="radio-title">Weekly</span>
+        <input type="radio" name="period" value="Monthly" v-model="period"/><span class="radio-title">Monthly</span>
+      </div>
       <br>
       <div class="form-item-wrapper">
         <label for="points">Assigned Points</label>
