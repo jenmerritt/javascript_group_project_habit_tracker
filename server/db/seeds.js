@@ -36,12 +36,15 @@ db.habits.insertMany([
 
 db.rewards.insertMany([
   {
-    name: "Eat a Pizza"
+    name: "Eat a Pizza",
+    targetLevel: 1
   },
   {
-    name: "Night Out"
+    name: "Night Out",
+    targetLevel: 2
   },
   {
-    name: "Go On Holiday"
+    name: "Go On Holiday",
+    targetLevel: 3
   }
 ]);
