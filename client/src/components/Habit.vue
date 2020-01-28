@@ -5,7 +5,8 @@
         <h2>{{ habit.name }}</h2>
       </div>
       <div v-if="sameMonth()">
-        <h2 v-if="!habit.timeStamps.length == 0" >Achieved: {{habit.timeStamps[0]}}</h2>
+        <h3 v-if="!habit.timeStamps.length == 0" class="habit-achieved">Achieved!</h3>
+        <h2 class="habit-timestamp">{{habit.timeStamps[0]}}</h2>
       </div>
       <div v-if="!sameMonth()" class="habit-points">
         <button v-on:click="updateTimesAchieved" id="adjust-score-button">Adjust Score Icon</button>
@@ -83,6 +84,16 @@ export default {
 .habit-points{
   padding: 30px;
   background-color: #8AC926;
+}
+
+.habit-achieved{
+  color: goldenrod;
+  text-align: center;
+}
+
+.habit-timestamp{
+  color: goldenrod;
+  text-align: center;
 }
 
 #adjust-score-button {
