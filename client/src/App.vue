@@ -31,6 +31,7 @@
     </div>
     <div id="rewards-wrapper">
       <rewards-list />
+      <reward-form/>
     </div>
   </div>
 
@@ -40,6 +41,7 @@
 import HabitForm from "@/components/HabitForm";
 import HabitsList from "@/components/HabitsList";
 import RewardsList from "@/components/RewardsList";
+import RewardForm from '@/components/RewardForm';
 import HabitUpdateForm from "@/components/HabitUpdateForm";
 import { eventBus } from "@/main";
 
@@ -68,7 +70,8 @@ watch: {
     'habits-list': HabitsList,
     'habit-form': HabitForm,
     'habit-update-form': HabitUpdateForm,
-    'rewards-list': RewardsList
+    'rewards-list': RewardsList,
+    'reward-form': RewardForm
   },
   mounted() {
     eventBus.$on('habits', habits => {
