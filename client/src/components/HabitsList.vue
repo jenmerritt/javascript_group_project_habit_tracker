@@ -31,7 +31,10 @@ export default {
 
     eventBus.$on('habit-added', habit => this.habits.push(habit))
 
-
+    eventBus.$on('delete-habit', habit => {
+      HabitService.destroyHabit(habit)
+      this.habits.pop(habit)
+    })
   },
   methods: {
     fetchHabits() {
@@ -45,10 +48,10 @@ export default {
 
 <style lang="css" scoped>
 
-#habit-list {
-  margin: 0 auto;
-  max-width: 700px;
-  list-style-type: none;
-}
+  #habit-list {
+    margin: 0 auto;
+    max-width: 700px;
+    list-style-type: none;
+  }
 
 </style>

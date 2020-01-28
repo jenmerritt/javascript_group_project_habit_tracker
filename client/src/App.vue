@@ -48,17 +48,15 @@ export default {
     }
 
   },
-watch: {
-  pointsTotal: function() {
-    const newCalculatedLevel = Math.floor(this.pointsTotal / 100)
-    if (newCalculatedLevel < this.level) {
-      return this.level
+  watch: {
+    pointsTotal: function() {
+      const newCalculatedLevel = Math.floor(this.pointsTotal / 100)
+      if (newCalculatedLevel < this.level) {
+        return this.level
+      }
+      return this.level = newCalculatedLevel
     }
-    return this.level = newCalculatedLevel
-  }
-},
-
-
+  },
   computed:{
     score(){
       return this.pointsTotal

@@ -23,6 +23,13 @@ export default {
       headers: {'Content-Type': 'application/json'}
     })
     .then(res => res.json())
+  },
+
+  destroyHabit(habit) {
+    return fetch(baseURL + habit._id, {
+      method: 'DELETE'
+    })
+    .then(res => res.json)
   }
 
 }

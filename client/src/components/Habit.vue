@@ -1,6 +1,7 @@
 <template lang="html">
   <li class="habit-item">
     <div class="habit-item-wrapper">
+      <p class="delete" v-on:click="deleteHabit()">Delete Habit: ❌</p>
       <div class="habit-name" v-on:click="editHabit">
         <h2>{{ habit.name }}</h2>
       </div>
@@ -60,6 +61,9 @@ export default {
     },
     editHabit(){
       eventBus.$emit('edit-habit', this.habit)
+    },
+    deleteHabit() {
+      eventBus.$emit('delete-habit', this.habit)
     }
   }
 }
@@ -89,6 +93,13 @@ export default {
   font-size: 25px;
   text-align: left;
   color: #0a1831;
+}
+
+.delete {
+  color: black;
+  font-size: 10px;
+  border: 1px solid lightgrey;
+  max-height: 30px;
 }
 
 .habit-name:hover{
