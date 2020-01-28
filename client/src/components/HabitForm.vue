@@ -39,7 +39,6 @@ export default {
       name: null,
       type: null,
       points: null,
-      timesAchieved: 0,
       timeStamps: [],
       period: null
     }
@@ -55,7 +54,6 @@ export default {
       const payload = {
         name: this.name,
         points: this.points,
-        timesAchieved: this.timesAchieved,
         timeStamps: [],
         period: this.period
       }
@@ -66,7 +64,6 @@ export default {
       this.name = null;
       this.type = null;
       this.points = null;
-      this.timesAchieved = 0;
       this.period = null
     }
 

@@ -42,7 +42,6 @@ export default {
       name: null,
       type: 'positive',
       points: null,
-      timesAchieved: 0,
       period: null
     }
   },
@@ -58,7 +57,6 @@ export default {
         _id: this._id,
         name: this.name,
         points: this.points,
-        timesAchieved: this.timesAchieved,
         period: this.period
       }
 
@@ -69,7 +67,6 @@ export default {
       this.name = null;
       this.type = 'positive';
       this.points = null;
-      this.timesAchieved = 0;
       this.period = null;
     }
   },
@@ -78,7 +75,6 @@ export default {
       this._id = habit._id;
       this.name = habit.name;
       this.points = habit.points;
-      this.timesAchieved = habit.timesAchieved;
       this.period = habit.period;
 
       if (habit.points <0) {

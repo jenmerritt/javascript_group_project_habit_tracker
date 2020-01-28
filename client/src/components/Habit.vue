@@ -9,7 +9,7 @@
         <h2 class="habit-timestamp">{{latestTimestamp()}}</h2>
       </div>
       <div v-if="!checkAllowedInPeriod()" class="habit-points">
-        <button v-on:click="updateTimesAchieved" id="adjust-score-button">Adjust Score Icon</button>
+        <button v-on:click="updateTimeStamps" id="adjust-score-button">Adjust Score Icon</button>
       </div>
     </div>
   </li>
@@ -52,8 +52,7 @@ export default {
       const prettyTimestamp = new Date(lastTimestamp).toDateString()
       return prettyTimestamp
     },
-    updateTimesAchieved(){
-      this.habit.timesAchieved += 1
+    updateTimeStamps(){
       this.habit.timeStamps.push(new Date(this.moment()))
       HabitService.putHabit(this.habit)
       .then( () => eventBus.$emit('habit-updated', this.habit))
