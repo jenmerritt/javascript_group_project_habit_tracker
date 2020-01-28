@@ -5,6 +5,9 @@
       <div class="form-item-wrapper">
         <input type="text" id="name" v-model="name"/>
       </div>
+      <div class="form-item-wrapper">
+        <input type="number" id="targetLevel" v-model="targetLevel"/>
+      </div>
       <input type="submit" value="Save">
     </form>
   </div>
@@ -19,7 +22,8 @@ export default {
   data() {
     return {
       _id: null,
-      name: null
+      name: null,
+      targetLevel: null
     }
   },
   methods: {
@@ -29,6 +33,7 @@ export default {
       const payload = {
         _id: this._id,
         name: this.name,
+        targetLevel: this.targetLevel
       }
 
       RewardService.putReward(payload)
@@ -36,6 +41,7 @@ export default {
 
       this._id = null;
       this.name = null;
+      this.targetLevel = null;
     }
   },
   mounted() {
@@ -43,6 +49,7 @@ export default {
     eventBus.$on('edit-reward', reward => {
       this._id = reward._id;
       this.name = reward.name;
+      this.targetLevel = reward.targetLevel
     })
   }
 }

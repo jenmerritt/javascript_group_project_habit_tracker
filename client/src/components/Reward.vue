@@ -4,6 +4,9 @@
       <div v-on:click="editReward" class="reward-name">
         <h2>{{ reward.name }}</h2>
       </div>
+      <div class="reward-target-level">
+        <h2>{{ reward.targetLevel }}</h2>
+      </div>
       <div class="delete-button-wrapper">
         <button v-on:click="handleDelete" id="delete-button">DELETE</button>
       </div>
