@@ -21,3 +21,15 @@ db.habits.insertMany([
     timeStamps: []
   }
 ]);
+
+db.rewards.insertMany([
+  {
+    name: "Eat a Pizza"
+  },
+  {
+    name: "Night Out"
+  },
+  {
+    name: "Go On Holiday"
+  }
+]);

@@ -18,6 +18,9 @@ MongoClient.connect('mongodb://localhost:27017')
     const habitsCollection = db.collection('habits');
     const habitsRouter = createRouter(habitsCollection);
     app.use('/api/habits', habitsRouter);
+    const rewardsCollection = db.collection('rewards');
+    const rewardsRouter = createRouter(rewardsCollection);
+    app.use('/api/rewards', rewardsRouter);
   })
   .catch(console.err);
 
