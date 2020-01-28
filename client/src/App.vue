@@ -8,7 +8,7 @@
           <p>POINTS</p>
         </div>
         <div id="level">
-          <h1>LEVEL: {{this.levelTotal}}</h1>
+          <h1>LEVEL: {{this.level}}</h1>
         </div>
       </div>
       <div id="header-right">
@@ -50,17 +50,19 @@ export default {
   data(){
     return{
       pointsTotal: 0,
-      levelTotal: 0
+      level: 0
     }
 
   },
-watch: {
-  pointsTotal: function() {
-    this.levelTotal = Math.floor(this.pointsTotal / 100)
-  }
-},
-
-
+  watch: {
+    pointsTotal: function() {
+      const newCalculatedLevel = Math.floor(this.pointsTotal / 100)
+      if (newCalculatedLevel < this.level) {
+        return this.level
+      }
+      return this.level = newCalculatedLevel
+    }
+  },
   computed:{
     score(){
       return this.pointsTotal
@@ -76,11 +78,9 @@ watch: {
   mounted() {
     eventBus.$on('habits', habits => {
       let total = 0;
-      habits.forEach(habit => total += (habit.points * habit.timesAchieved))
+      habits.forEach(habit => total += (habit.points * habit.timeStamps.length))
       this.pointsTotal = total;
     })
-
-
   }
 }
 </script>

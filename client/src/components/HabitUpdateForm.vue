@@ -11,6 +11,13 @@
         <input type="radio" name="type" value="positive" v-model="type"/><span class="radio-title">Positive</span>
         <input type="radio" name="type" value="negative" v-model="type"/><span class="radio-title">Negative</span>
       </div>
+      <div class="form-item-wrapper">
+        <label for="type">Set Time Period:</label>
+        <br/>
+        <input type="radio" name="period" value="Daily" v-model="period"/><span class="radio-title">Daily</span>
+        <input type="radio" name="period" value="Weekly" v-model="period"/><span class="radio-title">Weekly</span>
+        <input type="radio" name="period" value="Monthly" v-model="period"/><span class="radio-title">Monthly</span>
+      </div>
       <br>
       <div class="form-item-wrapper">
         <label for="points">Assigned Points</label>
@@ -35,7 +42,7 @@ export default {
       name: null,
       type: 'positive',
       points: null,
-      timesAchieved: 0
+      period: null
     }
   },
   methods: {
@@ -50,7 +57,7 @@ export default {
         _id: this._id,
         name: this.name,
         points: this.points,
-        timesAchieved: this.timesAchieved
+        period: this.period
       }
 
       HabitService.putHabit(payload)
@@ -60,7 +67,7 @@ export default {
       this.name = null;
       this.type = 'positive';
       this.points = null;
-      this.timesAchieved = 0;
+      this.period = null;
     }
   },
   mounted() {
@@ -68,7 +75,7 @@ export default {
       this._id = habit._id;
       this.name = habit.name;
       this.points = habit.points;
-      this.timesAchieved = habit.timesAchieved;
+      this.period = habit.period;
 
       if (habit.points <0) {
         this.type = 'negative'

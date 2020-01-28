@@ -1,15 +1,16 @@
 <template lang="html">
   <li class="habit-item">
     <div class="habit-item-wrapper">
+      <p class="delete" v-on:click="deleteHabit()">Delete Habit: ❌</p>
       <div class="habit-name" v-on:click="editHabit">
         <h2>{{ habit.name }}</h2>
       </div>
-      <div v-if="sameMonth()">
-        <h3 v-if="!habit.timeStamps.length == 0" class="habit-achieved">Achieved!</h3>
-        <h2 class="habit-timestamp">{{habit.timeStamps[0]}}</h2>
+      <div v-if="checkAllowedInPeriod()">
+        <h3 v-if="!habit.timeStamps.length == 0" class="habit-achieved">Last Achieved:</h3>
+        <h2 class="habit-timestamp">{{latestTimestamp()}}</h2>
       </div>
-      <div v-if="!sameMonth()" class="habit-points">
-        <button v-on:click="updateTimesAchieved" id="adjust-score-button">Adjust Score Icon</button>
+      <div v-if="!checkAllowedInPeriod()" class="habit-points">
+        <button v-on:click="updateTimeStamps" id="adjust-score-button">Adjust Score Icon</button>
       </div>
     </div>
   </li>
@@ -28,24 +29,42 @@ export default {
     moment() {
       return moment();
     },
-    sameDay() {
-      const daysAchieved = this.habit.timeStamps.filter(day => day == this.moment().format('DD-MM-YYYY'))
-      return daysAchieved.length
+    checkAllowedInPeriod() {
+      const today = new Date(this.moment())
+
+      if (this.habit.period === 'Daily') {
+        const daysAchieved = this.habit.timeStamps
+        .filter(day => new Date(day).getDate() === today.getDate())
+        return daysAchieved.length
+      }
+      else if (this.habit.period === 'Monthly') {
+        const daysAchieved = this.habit.timeStamps
+        .filter(day => new Date(day).getMonth() === today.getMonth())
+        return daysAchieved.length
+      }
+      else {
+        const endOfWeekPeriod = new Date(this.moment().add(7, 'days').calendar());
+        const daysAchieved = this.habit.timeStamps.filter(day => endOfWeekPeriod > today)
+        return daysAchieved.length
+      }
     },
-    sameMonth() {
-      const today = this.moment().format('DD-MM-YYYY')
-      const daysAchieved = this.habit.timeStamps.filter(day => day[3] == today[3] && day[4] == today[4])
-      return daysAchieved.length
+    latestTimestamp() {
+      const lastTimestamp = this.habit.timeStamps[this.habit.timeStamps.length-1]
+      const prettyTimestamp = new Date(lastTimestamp).toDateString()
+      return prettyTimestamp
     },
-    updateTimesAchieved(){
-      this.habit.timesAchieved += 1
-      this.habit.timeStamps.push(this.moment().format('DD-MM-YYYY'))
+    updateTimeStamps(){
+      this.habit.timeStamps.push(new Date(this.moment()))
       HabitService.putHabit(this.habit)
-      .then( () => eventBus.$emit('habit-updated', this.habit))
+      .then( () => eventBus.$emit('habit-updated', this.habit._id))
       window.scrollTo(0,0);
     },
     editHabit(){
       eventBus.$emit('edit-habit', this.habit)
+    },
+    deleteHabit() {
+      eventBus.$emit('delete-habit', this.habit._id)
+      HabitService.destroyHabit(this.habit)
     }
   }
 }
@@ -75,6 +94,19 @@ export default {
   font-size: 25px;
   text-align: left;
   color: #0a1831;
+}
+
+.delete {
+  color: black;
+  text-decoration: underline;
+  background-color: #4BC0D9;
+  font-size: 10px;
+  border: 1px solid lightgrey;
+  max-height: 30px;
+}
+
+.delete{
+  cursor: pointer;
 }
 
 .habit-name:hover{
