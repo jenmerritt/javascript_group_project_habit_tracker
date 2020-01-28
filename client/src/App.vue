@@ -30,7 +30,7 @@
       <habit-update-form />
     </div>
     <div id="rewards-wrapper">
-      <rewards-list />
+      <rewards-list :level = "level"/>
       <reward-form/>
       <reward-update-form />
     </div>

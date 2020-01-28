@@ -4,7 +4,7 @@
       <button id="new-reward-button">NEW REWARD</button>
     </div>
     <ul id="reward-list">
-      <reward v-for="reward in rewards" :reward="reward"></reward>
+      <reward v-for="reward in rewards" :reward="reward" :level = "level"></reward>
     </ul>
   </div>
 </template>
@@ -21,6 +21,7 @@ export default {
       rewards: []
     }
   },
+  props: ["level"],
   mounted() {
 
     this.fetchRewards()
