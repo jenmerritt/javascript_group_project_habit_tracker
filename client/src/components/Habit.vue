@@ -4,11 +4,11 @@
       <div class="habit-name" v-on:click="editHabit">
         <h2>{{ habit.name }}</h2>
       </div>
-      <div v-if="sameMonth()">
+      <div v-if="checkAllowedInPeriod()">
         <h3 v-if="!habit.timeStamps.length == 0" class="habit-achieved">Achieved!</h3>
         <h2 class="habit-timestamp">{{habit.timeStamps[0]}}</h2>
       </div>
-      <div v-if="!sameMonth()" class="habit-points">
+      <div v-if="!checkAllowedInPeriod()" class="habit-points">
         <button v-on:click="updateTimesAchieved" id="adjust-score-button">Adjust Score Icon</button>
       </div>
     </div>
@@ -28,14 +28,16 @@ export default {
     moment() {
       return moment();
     },
-    sameDay() {
-      const daysAchieved = this.habit.timeStamps.filter(day => day == this.moment().format('DD-MM-YYYY'))
-      return daysAchieved.length
-    },
-    sameMonth() {
-      const today = this.moment().format('DD-MM-YYYY')
-      const daysAchieved = this.habit.timeStamps.filter(day => day[3] == today[3] && day[4] == today[4])
-      return daysAchieved.length
+    checkAllowedInPeriod() {
+      if (this.habit.period === 'Daily') {
+        const daysAchieved = this.habit.timeStamps.filter(day => day == this.moment().format('DD-MM-YYYY'))
+        return daysAchieved.length
+      }
+      else if (this.habit.period === 'Monthly') {
+        const today = this.moment().format('DD-MM-YYYY')
+        const daysAchieved = this.habit.timeStamps.filter(day => day[3] == today[3] && day[4] == today[4])
+        return daysAchieved.length
+      }
     },
     updateTimesAchieved(){
       this.habit.timesAchieved += 1

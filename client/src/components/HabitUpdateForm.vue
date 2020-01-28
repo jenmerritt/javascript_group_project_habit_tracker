@@ -42,7 +42,8 @@ export default {
       name: null,
       type: 'positive',
       points: null,
-      timesAchieved: 0
+      timesAchieved: 0,
+      period: null
     }
   },
   methods: {
@@ -57,7 +58,8 @@ export default {
         _id: this._id,
         name: this.name,
         points: this.points,
-        timesAchieved: this.timesAchieved
+        timesAchieved: this.timesAchieved,
+        period: this.period
       }
 
       HabitService.putHabit(payload)
@@ -68,6 +70,7 @@ export default {
       this.type = 'positive';
       this.points = null;
       this.timesAchieved = 0;
+      this.period = null;
     }
   },
   mounted() {
@@ -76,6 +79,7 @@ export default {
       this.name = habit.name;
       this.points = habit.points;
       this.timesAchieved = habit.timesAchieved;
+      this.period = habit.period;
 
       if (habit.points <0) {
         this.type = 'negative'
