@@ -3,10 +3,12 @@
     <div class="habit-item-wrapper">
       <div class="habit-name" v-on:click="editHabit">
         <h2>{{ habit.name }}</h2>
-        <p v-if="!habit.timeStamps.length == 0" >Achieved: {{habit.timeStamps[0]}}</p>
       </div>
-      <div class="habit-points">
-        <button v-if="!sameMonth()" v-on:click="updateTimesAchieved" id="adjust-score-button">Adjust Score Icon</button>
+      <div v-if="sameMonth()">
+        <h2 v-if="!habit.timeStamps.length == 0" >Achieved: {{habit.timeStamps[0]}}</h2>
+      </div>
+      <div v-if="!sameMonth()" class="habit-points">
+        <button v-on:click="updateTimesAchieved" id="adjust-score-button">Adjust Score Icon</button>
       </div>
     </div>
   </li>
@@ -32,21 +34,21 @@ export default {
     sameMonth() {
       const today = this.moment().format('DD-MM-YYYY')
       const daysAchieved = this.habit.timeStamps.filter(day => day[3] == today[3] && day[4] == today[4])
-        return daysAchieved.length
-      },
-      updateTimesAchieved(){
-        this.habit.timesAchieved += 1
-        this.habit.timeStamps.push(this.moment().format('DD-MM-YYYY'))
-        HabitService.putHabit(this.habit)
-        .then( () => eventBus.$emit('habit-updated', this.habit))
-        window.scrollTo(0,0);
-      },
-      editHabit(){
-        eventBus.$emit('edit-habit', this.habit)
-      }
+      return daysAchieved.length
+    },
+    updateTimesAchieved(){
+      this.habit.timesAchieved += 1
+      this.habit.timeStamps.push(this.moment().format('DD-MM-YYYY'))
+      HabitService.putHabit(this.habit)
+      .then( () => eventBus.$emit('habit-updated', this.habit))
+      window.scrollTo(0,0);
+    },
+    editHabit(){
+      eventBus.$emit('edit-habit', this.habit)
     }
   }
-  </script>
+}
+</script>
 
 <style lang="css" scoped>
 
@@ -102,4 +104,4 @@ export default {
   cursor:pointer;
 }
 
-  </style>
+</style>

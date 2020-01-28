@@ -47,7 +47,8 @@ export default {
       const payload = {
         name: this.name,
         points: this.points,
-        timesAchieved: this.timesAchieved
+        timesAchieved: this.timesAchieved,
+        timeStamps: []
       }
 
       HabitService.postHabit(payload)
