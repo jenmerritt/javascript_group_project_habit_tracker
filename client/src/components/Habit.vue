@@ -5,7 +5,7 @@
         <h2>{{ habit.name }}</h2>
       </div>
       <div v-if="checkAllowedInPeriod()">
-        <h3 v-if="!habit.timeStamps.length == 0" class="habit-achieved">Achieved!</h3>
+        <h3 v-if="!habit.timeStamps.length == 0" class="habit-achieved">Last Achieved:</h3>
         <h2 class="habit-timestamp">{{latestTimestamp()}}</h2>
       </div>
       <div v-if="!checkAllowedInPeriod()" class="habit-points">
