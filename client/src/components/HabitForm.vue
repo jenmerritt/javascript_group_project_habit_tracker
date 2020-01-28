@@ -24,6 +24,7 @@
         <input type="number" name="points" v-model="points"/>
       </div>
       <input type="submit" value="Save">
+      <button v-on:click="closeAddHabitForm" id="cancel-button">Cancel</button>
     </form>
   </div>
 </template>
@@ -65,6 +66,13 @@ export default {
       this.type = null;
       this.points = null;
       this.period = null
+
+      eventBus.$emit('habit-form-visibility-update', false)
+
+    },
+
+    closeAddHabitForm(){
+      eventBus.$emit('habit-form-visibility-update', false)
     }
 
   }
@@ -120,6 +128,7 @@ input[type=submit]{
   font-size: 20px;
   color: green;
   margin-top: 25px;
+  margin-right: 20px;
 }
 
 input[type=submit]:hover{
@@ -132,11 +141,36 @@ input[type=submit]:hover{
   cursor: pointer;
   border: 3px solid green;
   margin-top: 25px;
+  margin-right: 20px;
 }
 
 .radio-title{
   font-size: 22px;
   padding: 0 15px 0 15px;
+}
+
+#cancel-button{
+  background-color: #702632;
+  padding:10px;
+  width:150px;
+  border: none;
+  font-size: 20px;
+  color: #000;
+  margin-top: 25px;
+  margin-left: 20px;
+}
+
+#cancel-button:hover{
+  background-color: #702632;
+  padding:7px;
+  width:150px;
+  border: none;
+  font-size: 20px;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid #8B0000;
+  margin-top: 25px;
+  margin-left: 20px;
 }
 
 </style>

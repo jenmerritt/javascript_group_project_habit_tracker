@@ -6,7 +6,9 @@
         <input type="text" v-model="name" id="name" placeholder="Enter Reward Name...."/>
       </div>
       <div class="form-item-wrapper">
-        <input type="number" v-model="targetLevel" id="target-level" placeholder="Enter Target Level...."/>
+        <label for="targetLevel">Enter Target Level:</label>
+        <br/>
+        <input type="number" v-model="targetLevel" id="target-level" />
       </div>
       <input type="submit" value="Save">
     </form>
@@ -41,6 +43,8 @@ export default {
 
       this.name = null;
       this.targetLevel = null;
+
+      eventBus.$emit('reward-form-visibility-update', false)
     }
   }
 }
@@ -49,12 +53,14 @@ export default {
 <style lang="css" scoped>
 
 .reward-form {
-  width: 65%;
+  width: 80%;
   margin: 0 auto;
-  margin-top:20px;
+  margin-top:50px;
+  margin-bottom: 50px;
   background-color: #113e7a;
   padding: 20px 20px 40px 20px;
   text-align: center;
+  border: 5px solid #0a1832;
 }
 
 label {
@@ -68,6 +74,13 @@ input[type=text]{
   font-family:inherit;
   height: 30px;
   width: 70%;
+  font-size: 22px;
+}
+
+input[type=number]{
+  font-family:inherit;
+  height: 30px;
+  width: 80px;
   font-size: 22px;
 }
 

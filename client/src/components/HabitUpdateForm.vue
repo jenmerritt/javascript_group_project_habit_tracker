@@ -62,6 +62,7 @@ export default {
 
       HabitService.putHabit(payload)
       .then(habit => eventBus.$emit('habit-updated', habit))
+      .then(() => eventBus.$emit('habit-update-not-visible', false))
 
       this._id = null;
       this.name = null;
@@ -88,6 +89,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
 #habit-form-wrapper{
   margin-bottom:50px;
 }

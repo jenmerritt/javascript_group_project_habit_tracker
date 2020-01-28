@@ -6,6 +6,8 @@
         <input type="text" id="name" v-model="name"/>
       </div>
       <div class="form-item-wrapper">
+        <label for="targetLevel">Enter Target Level:</label>
+        <br/>
         <input type="number" id="targetLevel" v-model="targetLevel"/>
       </div>
       <input type="submit" value="Save">
@@ -38,6 +40,7 @@ export default {
 
       RewardService.putReward(payload)
       .then(reward => eventBus.$emit('reward-updated', reward))
+      .then(() => eventBus.$emit('reward-update-not-visible', false))
 
       this._id = null;
       this.name = null;
@@ -56,4 +59,61 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+#reward-form-wrapper{
+  margin-bottom:50px;
+}
+
+.reward-form {
+  width: 80%;
+  margin: 0 auto;
+  margin-top:20px;
+  background-color: #113e7a;
+  padding: 20px 20px 40px 20px;
+  border: 5px solid #0a1832;
+  text-align: center;
+}
+
+label {
+  min-width: 100px;
+  display: inline-block;
+  font-size: 22px;
+  padding: 15px 0 15px 0;
+}
+
+input[type=text]{
+  font-family:inherit;
+  height: 30px;
+  width: 70%;
+  font-size: 22px;
+}
+
+input[type=number]{
+  font-family:inherit;
+  height: 30px;
+  width: 80px;
+  font-size: 22px;
+}
+
+input[type=submit]{
+  background-color: #8AC926;
+  padding:10px;
+  width:150px;
+  border: none;
+  font-size: 20px;
+  color: green;
+  margin-top: 25px;
+}
+
+input[type=submit]:hover{
+  background-color: #8AC926;
+  padding:7px;
+  width:150px;
+  border: none;
+  font-size: 20px;
+  color: green;
+  cursor: pointer;
+  border: 3px solid green;
+  margin-top: 25px;
+}
 </style>

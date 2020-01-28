@@ -21,23 +21,23 @@
         <h1>YOUR HABITS</h1>
       </div>
       <div id="heading-block-right">
-        <button id="add-new-button">ADD NEW</button>
+        <button id="add-new-button" v-on:click="habitAddVisible = !habitAddVisible">ADD NEW</button>
       </div>
     </div>
     <div id="main-wrapper">
+      <habit-form  v-if="habitAddVisible" />
+      <habit-update-form v-if="habitUpdateVisible"  />
       <habits-list />
-      <habit-form />
-      <habit-update-form />
     </div>
-    <div id="rewards-wrapper">
-<<<<<<< HEAD
-      <a name="rewards"><rewards-list /></a>
-      <reward-form v-if="rewardsFormVisible" />
-=======
+    <div id="rewards-header">
+      <div id="new-reward">
+        <h1>YOUR REWARDS</h1>
+        <button id="new-reward-button" v-on:click="rewardAddVisible = !rewardAddVisible">ADD NEW</button>
+      </div>
+      <reward-form v-if="rewardAddVisible" />
+      <reward-update-form v-if="rewardUpdateVisible"  />
       <a name="rewards"><rewards-list :level = "level"/></a>
-      <reward-form v-if="rewardsFormVisible"/>
-      <reward-update-form />
->>>>>>> develop
+    </div>
     </div>
   </div>
 
@@ -58,7 +58,10 @@ export default {
     return{
       pointsTotal: 0,
       level: 0,
-      rewardsFormVisible: false
+      habitUpdateVisible: false,
+      habitAddVisible: false,
+      rewardAddVisible: false,
+      rewardUpdateVisible: false
     }
 
   },
@@ -91,6 +94,30 @@ export default {
       this.pointsTotal = total;
     })
 
+    eventBus.$on('habit-update-visible', update => {
+      this.habitUpdateVisible = true
+    })
+
+    eventBus.$on('habit-update-not-visible', update => {
+      this.habitUpdateVisible = false
+    })
+
+    eventBus.$on('reward-update-visible', update => {
+      this.rewardUpdateVisible = true
+    })
+
+    eventBus.$on('reward-update-not-visible', update => {
+      this.rewardUpdateVisible = false
+    })
+
+    eventBus.$on('habit-form-visibility-update', update => {
+      this.habitAddVisible = false
+    })
+
+    eventBus.$on('reward-form-visibility-update', update => {
+      this.rewardAddVisible = false
+    })
+
   }
 }
 </script>
@@ -108,6 +135,8 @@ body{
   background-color: #0a1832;
   color: #FFF;
   margin: 0 auto;
+  margin-bottom: 50px;
+
 }
 
 #header-right a{
@@ -208,4 +237,41 @@ body{
   border: 3px solid green;
 }
 
+#rewards-header {
+  width: 70%;
+  margin: 0 auto;
+  background-color: #113e7a;
+  padding: 20px 20px 20px 20px;
+  margin-top: 50px;
+}
+
+#new-reward {
+  padding: 0 20px 0 20px;
+  text-align: center;
+}
+
+#new-reward h1{
+  text-align: center;
+  font-size:40px;
+}
+
+#new-reward-button{
+  background-color: #8AC926;
+  padding:20px;
+  width:150px;
+  border: none;
+  font-size: 20px;
+  color: green;
+}
+
+#new-reward-button:hover{
+  background-color: #8AC926;
+  padding:17px;
+  width:150px;
+  border: none;
+  font-size: 20px;
+  color: green;
+  cursor: pointer;
+  border: 3px solid green;
+}
 </style>
