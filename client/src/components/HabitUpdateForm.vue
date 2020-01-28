@@ -25,6 +25,7 @@
         <input type="number" name="points" v-model="points"/>
       </div>
       <input type="submit" value="Save">
+      <button v-on:click="closeUpdateHabitForm" id="cancel-button">Cancel</button>
     </form>
   </div>
 
@@ -69,6 +70,9 @@ export default {
       this.type = 'positive';
       this.points = null;
       this.period = null;
+    },
+    closeUpdateHabitForm(){
+      eventBus.$emit('habit-update-not-visible', false)
     }
   },
   mounted() {
@@ -152,5 +156,28 @@ input[type=submit]:hover{
 .radio-title{
   font-size: 22px;
   padding: 0 15px 0 15px;
+}
+#cancel-button{
+  background-color: #702632;
+  padding:10px;
+  width:150px;
+  border: none;
+  font-size: 20px;
+  color: #000;
+  margin-top: 25px;
+  margin-left: 20px;
+}
+
+#cancel-button:hover{
+  background-color: #702632;
+  padding:7px;
+  width:150px;
+  border: none;
+  font-size: 20px;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid #8B0000;
+  margin-top: 25px;
+  margin-left: 20px;
 }
 </style>

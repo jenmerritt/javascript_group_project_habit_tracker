@@ -11,6 +11,7 @@
         <input type="number" id="targetLevel" v-model="targetLevel"/>
       </div>
       <input type="submit" value="Save">
+      <button v-on:click="closeUpdateRewardForm" id="cancel-button">Cancel</button>
     </form>
   </div>
 </template>
@@ -45,6 +46,9 @@ export default {
       this._id = null;
       this.name = null;
       this.targetLevel = null;
+    },
+    closeUpdateRewardForm(){
+      eventBus.$emit('reward-update-not-visible', false)
     }
   },
   mounted() {
@@ -115,5 +119,29 @@ input[type=submit]:hover{
   cursor: pointer;
   border: 3px solid green;
   margin-top: 25px;
+}
+
+#cancel-button{
+  background-color: #702632;
+  padding:10px;
+  width:150px;
+  border: none;
+  font-size: 20px;
+  color: #000;
+  margin-top: 25px;
+  margin-left: 20px;
+}
+
+#cancel-button:hover{
+  background-color: #702632;
+  padding:7px;
+  width:150px;
+  border: none;
+  font-size: 20px;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid #8B0000;
+  margin-top: 25px;
+  margin-left: 20px;
 }
 </style>
