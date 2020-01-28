@@ -6,7 +6,7 @@
       </div>
       <div v-if="checkAllowedInPeriod()">
         <h3 v-if="!habit.timeStamps.length == 0" class="habit-achieved">Achieved!</h3>
-        <h2 class="habit-timestamp">{{habit.timeStamps[0]}}</h2>
+        <h2 class="habit-timestamp">{{habit.timeStamps[habit.timeStamps.length-1]}}</h2>
       </div>
       <div v-if="!checkAllowedInPeriod()" class="habit-points">
         <button v-on:click="updateTimesAchieved" id="adjust-score-button">Adjust Score Icon</button>
@@ -29,19 +29,29 @@ export default {
       return moment();
     },
     checkAllowedInPeriod() {
+      const today = new Date(this.moment())
+
       if (this.habit.period === 'Daily') {
-        const daysAchieved = this.habit.timeStamps.filter(day => day == this.moment().format('DD-MM-YYYY'))
+        const daysAchieved = this.habit.timeStamps
+        .filter(day => new Date(day).getDate() === today.getDate())
         return daysAchieved.length
       }
       else if (this.habit.period === 'Monthly') {
-        const today = this.moment().format('DD-MM-YYYY')
-        const daysAchieved = this.habit.timeStamps.filter(day => day[3] == today[3] && day[4] == today[4])
+        const daysAchieved = this.habit.timeStamps
+        .filter(day => new Date(day).getMonth() === today.getMonth())
+        return daysAchieved.length
+      }
+      else {
+        const endOfWeekPeriod = new Date(this.moment().add(7, 'days').calendar());
+        const daysAchieved = this.habit.timeStamps.filter(day => endOfWeekPeriod > today)
         return daysAchieved.length
       }
     },
+
+
     updateTimesAchieved(){
       this.habit.timesAchieved += 1
-      this.habit.timeStamps.push(this.moment().format('DD-MM-YYYY'))
+      this.habit.timeStamps.push(new Date(this.moment()))
       HabitService.putHabit(this.habit)
       .then( () => eventBus.$emit('habit-updated', this.habit))
       window.scrollTo(0,0);
