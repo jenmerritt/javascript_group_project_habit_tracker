@@ -27,6 +27,12 @@ export default {
 
     eventBus.$on('reward-added', reward => this.rewards.push(reward))
 
+
+    eventBus.$on("reward-deleted", (id) => {
+      RewardService.deleteReward(id)
+      const index = this.rewards.findIndex(reward => reward._id === id);
+      this.rewards.splice(index, 1)
+    })
   },
   methods: {
     fetchRewards() {

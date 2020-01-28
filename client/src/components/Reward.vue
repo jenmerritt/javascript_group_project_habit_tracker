@@ -4,14 +4,25 @@
       <div class="reward-name">
         <h2>{{ reward.name }}</h2>
       </div>
+      <div class="delete-button-wrapper">
+        <button v-on:click="handleDelete" id="delete-button">DELETE</button>
+      </div>
     </div>
   </li>
 </template>
 
 <script>
+
+import {eventBus} from '@/main.js'
+
 export default {
   name: 'reward',
-  props: [ 'reward' ]
+  props: [ 'reward' ],
+  methods:  {
+    handleDelete() {
+      eventBus.$emit("reward-deleted", this.reward._id)
+    }
+  }
 }
 </script>
 
