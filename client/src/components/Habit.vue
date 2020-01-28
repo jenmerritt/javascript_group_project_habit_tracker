@@ -98,9 +98,15 @@ export default {
 
 .delete {
   color: black;
+  text-decoration: underline;
+  background-color: #4BC0D9;
   font-size: 10px;
   border: 1px solid lightgrey;
   max-height: 30px;
+}
+
+.delete{
+  cursor: pointer;
 }
 
 .habit-name:hover{
