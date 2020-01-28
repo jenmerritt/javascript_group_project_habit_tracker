@@ -63,7 +63,8 @@ export default {
       eventBus.$emit('edit-habit', this.habit)
     },
     deleteHabit() {
-      eventBus.$emit('delete-habit', this.habit)
+      eventBus.$emit('delete-habit', this.habit._id)
+      HabitService.destroyHabit(this.habit)
     }
   }
 }
