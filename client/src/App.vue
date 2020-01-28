@@ -14,9 +14,15 @@
       <div id="header-center">
         <h1>User</h1>
         <div class="user-details">
-          <img id="user-img" src="../public/Jude.png" alt="">
-          <h2>Name: Jude</h2>
-          <h2>Goal: Stop Smoking</h2>
+          <div class="">
+            <img id="user-img" src="../public/Jude.png" alt="">
+          </div>
+          <div class="">
+            <h2>Name: Jude</h2>
+          </div>
+          <div class="">
+            <h2>Goal: Stop Smoking</h2>
+          </div>
         </div>
       </div>
       <div id="header-right">
@@ -150,6 +156,11 @@ body{
   width: 40%;
   padding: 20px;
   text-align: left;
+}
+
+#user-details {
+  display:flex;
+  flex-direction: row;
 }
 
 #user-img {
