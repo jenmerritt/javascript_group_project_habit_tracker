@@ -11,9 +11,18 @@
           <h1>LEVEL: {{this.level}}</h1>
         </div>
       </div>
+      <div id="header-center">
+        <h1>User</h1>
+        <div class="user-details">
+          <img id="user-img" src="../public/Jude.png" alt="">
+          <h2>Name: Jude</h2>
+          <h2>Goal: Stop Smoking</h2>
+        </div>
+      </div>
       <div id="header-right">
-        <h1>Nav (and app name)</h1>
-        <h1>User Info</h1>
+        <h1>YOU V2.0</h1>
+        <h2><a href="#rewards-wrapper">Rewards</a></h2>
+        <!-- <h1><a href="#rewards">Rewards</a>  YOU V2.0 </h1> -->
       </div>
     </div>
     <div id="heading-block">
@@ -137,8 +146,19 @@ body{
   text-align:center;
 }
 
+#header-center {
+  width: 40%;
+  padding: 20px;
+  text-align: left;
+}
+
+#user-img {
+  height: 120px;
+  margin: 10px 10px 0 0;
+}
+
 #header-right {
-  width: 70%;
+  width: 30%;
   padding: 20px;
   text-align: right;
 }
