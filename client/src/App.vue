@@ -50,7 +50,11 @@ export default {
   },
 watch: {
   pointsTotal: function() {
-    this.level = Math.floor(this.pointsTotal / 100)
+    const newCalculatedLevel = Math.floor(this.pointsTotal / 100)
+    if (newCalculatedLevel < this.level) {
+      return this.level
+    }
+    return this.level = newCalculatedLevel
   }
 },
 
