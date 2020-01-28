@@ -4,7 +4,7 @@
       <button id="new-reward-button">ADD REWARD</button>
     </div>
     <ul id="reward-list">
-      <reward v-for="reward in rewards" :reward="reward"></reward>
+      <reward v-for="reward in rewards" :reward="reward" :level = "level"></reward>
     </ul>
   </div>
 </template>
@@ -21,13 +21,20 @@ export default {
       rewards: []
     }
   },
+<<<<<<< HEAD
   props: ['rewardsFormVisible'],
+=======
+  props: ["level"],
+>>>>>>> develop
   mounted() {
 
     this.fetchRewards()
 
     eventBus.$on('reward-added', reward => this.rewards.push(reward))
 
+    eventBus.$on('reward-updated', id => {
+      this.fetchRewards();
+    })
 
     eventBus.$on("reward-deleted", (id) => {
       RewardService.deleteReward(id)

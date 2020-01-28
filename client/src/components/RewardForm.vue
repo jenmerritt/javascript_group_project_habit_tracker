@@ -5,6 +5,9 @@
       <div class="form-item-wrapper">
         <input type="text" v-model="name" id="name" placeholder="Enter Reward Name...."/>
       </div>
+      <div class="form-item-wrapper">
+        <input type="number" v-model="targetLevel" id="target-level" placeholder="Enter Target Level...."/>
+      </div>
       <input type="submit" value="Save">
     </form>
   </div>
@@ -20,7 +23,8 @@ export default {
   name: 'reward-form',
   data() {
     return {
-      name: ""
+      name: "",
+      targetLevel: null
     }
   },
   methods: {
@@ -28,13 +32,15 @@ export default {
       e.preventDefault();
 
       const payload = {
-        name: this.name
+        name: this.name,
+        targetLevel: this.targetLevel
       }
 
       RewardService.postReward(payload)
       .then(reward => eventBus.$emit('reward-added', reward))
 
       this.name = null;
+      this.targetLevel = null;
     }
   }
 }

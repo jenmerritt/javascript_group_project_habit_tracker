@@ -18,5 +18,13 @@ export default {
     return fetch(baseURL + id,{
       method: 'DELETE'
     })
+  },
+  putReward(reward){
+    return fetch(baseURL + reward._id, {
+      method: 'PUT',
+      body: JSON.stringify(reward),
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(res => res.json())
   }
 }

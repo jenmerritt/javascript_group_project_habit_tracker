@@ -30,8 +30,14 @@
       <habit-update-form />
     </div>
     <div id="rewards-wrapper">
+<<<<<<< HEAD
       <a name="rewards"><rewards-list /></a>
       <reward-form v-if="rewardsFormVisible" />
+=======
+      <a name="rewards"><rewards-list :level = "level"/></a>
+      <reward-form v-if="rewardsFormVisible"/>
+      <reward-update-form />
+>>>>>>> develop
     </div>
   </div>
 
@@ -42,6 +48,7 @@ import HabitForm from "@/components/HabitForm";
 import HabitsList from "@/components/HabitsList";
 import RewardsList from "@/components/RewardsList";
 import RewardForm from '@/components/RewardForm';
+import RewardUpdateForm from '@/components/RewardUpdateForm'
 import HabitUpdateForm from "@/components/HabitUpdateForm";
 import { eventBus } from "@/main";
 
@@ -74,7 +81,8 @@ export default {
     'habit-form': HabitForm,
     'habit-update-form': HabitUpdateForm,
     'rewards-list': RewardsList,
-    'reward-form': RewardForm
+    'reward-form': RewardForm,
+    'reward-update-form': RewardUpdateForm
   },
   mounted() {
     eventBus.$on('habits', habits => {
