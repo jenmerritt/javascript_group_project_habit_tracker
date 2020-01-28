@@ -1,11 +1,12 @@
 <template lang="html">
   <li class="habit-item">
     <div class="habit-item-wrapper">
-      <div v-on:click="editHabit" class="habit-name">
+      <div class="habit-name" v-on:click="editHabit">
         <h2>{{ habit.name }}</h2>
+        <p v-if="!habit.timeStamps.length == 0" >Achieved: {{habit.timeStamps[0]}}</p>
       </div>
       <div class="habit-points">
-        <button v-on:click="updateTimesAchieved" id="adjust-score-button">Adjust Score Icon</button>
+        <button v-if="!sameMonth()" v-on:click="updateTimesAchieved" id="adjust-score-button">Adjust Score Icon</button>
       </div>
     </div>
   </li>
@@ -14,24 +15,38 @@
 <script>
 import { eventBus } from "@/main";
 import HabitService from "../services/HabitService.js";
+import moment from 'moment';
+
 
 export default {
   name: 'habit',
   props: ['habit'],
   methods:{
-    updateTimesAchieved(){
-      this.habit.timesAchieved += 1
-      HabitService.putHabit(this.habit)
-      .then( () => eventBus.$emit('habit-updated', this.habit));
-      window.scrollTo(0,0);
-      
+    moment() {
+      return moment();
     },
-    editHabit(){
-      eventBus.$emit('edit-habit', this.habit)
+    sameDay() {
+      const daysAchieved = this.habit.timeStamps.filter(day => day == this.moment().format('DD-MM-YYYY'))
+      return daysAchieved.length
+    },
+    sameMonth() {
+      const today = this.moment().format('DD-MM-YYYY')
+      const daysAchieved = this.habit.timeStamps.filter(day => day[3] == today[3] && day[4] == today[4])
+        return daysAchieved.length
+      },
+      updateTimesAchieved(){
+        this.habit.timesAchieved += 1
+        this.habit.timeStamps.push(this.moment().format('DD-MM-YYYY'))
+        HabitService.putHabit(this.habit)
+        .then( () => eventBus.$emit('habit-updated', this.habit))
+        window.scrollTo(0,0);
+      },
+      editHabit(){
+        eventBus.$emit('edit-habit', this.habit)
+      }
     }
   }
-}
-</script>
+  </script>
 
 <style lang="css" scoped>
 
@@ -87,4 +102,4 @@ export default {
   cursor:pointer;
 }
 
-</style>
+  </style>
