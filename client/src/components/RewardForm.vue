@@ -41,4 +41,49 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+.reward-form {
+  width: 65%;
+  margin: 0 auto;
+  margin-top:20px;
+  background-color: #113e7a;
+  padding: 20px 20px 40px 20px;
+  text-align: center;
+}
+
+label {
+  min-width: 100px;
+  display: inline-block;
+  font-size: 22px;
+  padding: 15px 0 15px 0;
+}
+
+input[type=text]{
+  font-family:inherit;
+  height: 30px;
+  width: 70%;
+  font-size: 22px;
+}
+
+input[type=submit]{
+  background-color: #8AC926;
+  padding:10px;
+  width:150px;
+  border: none;
+  font-size: 20px;
+  color: green;
+  margin-top: 25px;
+}
+
+input[type=submit]:hover{
+  background-color: #8AC926;
+  padding:7px;
+  width:150px;
+  border: none;
+  font-size: 20px;
+  color: green;
+  cursor: pointer;
+  border: 3px solid green;
+  margin-top: 25px;
+}
 </style>

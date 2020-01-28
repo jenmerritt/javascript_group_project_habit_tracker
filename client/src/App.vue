@@ -12,7 +12,7 @@
         </div>
       </div>
       <div id="header-right">
-        <h1>Nav (and app name)</h1>
+        <h1><a href="#rewards">Rewards</a>  YOU V2.0 </h1>
         <h1>User Info</h1>
       </div>
     </div>
@@ -30,7 +30,7 @@
       <habit-update-form />
     </div>
     <div id="rewards-wrapper">
-      <rewards-list />
+      <a name="rewards"><rewards-list /></a>
       <reward-form/>
     </div>
   </div>
@@ -98,6 +98,18 @@ body{
   background-color: #0a1832;
   color: #FFF;
   margin: 0 auto;
+}
+
+#header-right a{
+  text-decoration: none;
+  color: #ffffff;
+  margin-right:30px;
+}
+
+#header-right a:hover{
+  text-decoration: underline;
+  color: #ffffff;
+  margin-right:30px;
 }
 
 #header {

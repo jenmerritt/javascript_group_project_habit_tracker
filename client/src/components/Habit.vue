@@ -1,16 +1,16 @@
 <template lang="html">
   <li class="habit-item">
     <div class="habit-item-wrapper">
-      <p class="delete" v-on:click="deleteHabit()">Delete Habit: ❌</p>
+      <p class="delete" v-on:click="deleteHabit()">Delete ❌</p>
       <div class="habit-name" v-on:click="editHabit">
         <h2>{{ habit.name }}</h2>
       </div>
-      <div v-if="checkAllowedInPeriod()">
+      <div v-if="checkAllowedInPeriod()" class="habit-achieved-wrap">
         <h3 v-if="!habit.timeStamps.length == 0" class="habit-achieved">Last Achieved:</h3>
         <h2 class="habit-timestamp">{{latestTimestamp()}}</h2>
       </div>
       <div v-if="!checkAllowedInPeriod()" class="habit-points">
-        <button v-on:click="updateTimeStamps" id="adjust-score-button">Adjust Score Icon</button>
+        <button v-on:click="updateTimeStamps" id="adjust-score-button">{{ habit.points }}</button>
       </div>
     </div>
   </li>
@@ -98,10 +98,7 @@ export default {
 
 .delete {
   color: black;
-  text-decoration: underline;
-  background-color: #4BC0D9;
   font-size: 10px;
-  border: 1px solid lightgrey;
   max-height: 30px;
 }
 
@@ -123,6 +120,10 @@ export default {
   text-align: center;
 }
 
+.habit-achieved-wrap{
+    padding-right: 30px;
+}
+
 .habit-timestamp{
   color: goldenrod;
   text-align: center;
@@ -133,7 +134,7 @@ export default {
   padding:20px;
   width:150px;
   border: none;
-  font-size: 20px;
+  font-size: 30px;
   color: green;
 }
 
@@ -142,7 +143,7 @@ export default {
   padding:17px;
   width:150px;
   border: 3px solid green;
-  font-size: 20px;
+  font-size: 30px;
   color: green;
   cursor:pointer;
 }

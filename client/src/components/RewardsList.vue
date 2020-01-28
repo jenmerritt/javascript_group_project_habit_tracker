@@ -1,7 +1,7 @@
 <template lang="html">
   <div id="rewards-wrapper">
     <div id="new-reward">
-      <button id="new-reward-button">NEW REWARD</button>
+      <button id="new-reward-button">ADD REWARD</button>
     </div>
     <ul id="reward-list">
       <reward v-for="reward in rewards" :reward="reward"></reward>
@@ -47,4 +47,36 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+#rewards-wrapper {
+  width: 40%;
+  margin: 0 auto;
+  background-color: #113e7a;
+  padding: 20px 20px 20px 20px;
+}
+
+#reward-list {
+  list-style-type: none;
+  /* text-align:censter; */
+}
+
+#new-reward-button{
+  background-color: #8AC926;
+  padding:20px;
+  width:200px;
+  border: none;
+  font-size: 20px;
+  color: green;
+}
+
+#new-reward-button:hover{
+  background-color: #8AC926;
+  padding:17px;
+  width:200px;
+  border: none;
+  font-size: 20px;
+  color: green;
+  cursor: pointer;
+  border: 3px solid green;
+}
 </style>

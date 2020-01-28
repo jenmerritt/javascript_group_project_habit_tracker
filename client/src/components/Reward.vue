@@ -27,4 +27,28 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+#reward-item{
+  /* text-align:center; */
+}
+
+#delete-button{
+  background-color: #8AC926;
+  padding:10px;
+  width:100px;
+  border: none;
+  font-size: 16px;
+  color: green;
+}
+
+#delete-button:hover {
+  background-color: #8AC926;
+  padding:7px;
+  width:100px;
+  border: 3px solid green;
+  font-size: 16px;
+  color: green;
+  cursor:pointer;
+}
+
 </style>
