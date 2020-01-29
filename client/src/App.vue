@@ -22,8 +22,8 @@
                   <h2>Goal: Stop Smoking</h2>
                 </div>
             </div>
-            <div id="next-reward">
-              <p>your next reward</p>
+            <div v-if="getNextRewards()" id="next-reward">
+              <p>{{ getNextRewards().name }}</p>
             </div>
         </div>
         <div id="header-right">
@@ -139,6 +139,12 @@ export default {
 
     eventBus.$on('all-rewards', rewards => this.rewards = rewards)
 
+  },
+  methods: {
+    getNextRewards() {
+      const nextRewards = this.rewards.filter(reward => reward.targetLevel === this.level + 1)
+      return nextRewards[0]
+    }
   }
 }
 </script>

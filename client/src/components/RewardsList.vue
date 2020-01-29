@@ -35,15 +35,14 @@ export default {
       this.rewards.splice(index, 1)
     })
 
-    eventBus.$emit("all-rewards", this.rewards)
   },
   methods: {
 
     fetchRewards() {
       RewardService.getRewards()
       .then(rewards => this.rewards = rewards)
+      .then(() => eventBus.$emit("all-rewards", this.rewards))
     }
-
 
   },
 
