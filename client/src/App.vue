@@ -29,6 +29,7 @@
         <h1>YOU V2.0</h1>
         <h2><a href="#rewards-wrapper">Rewards</a></h2>
         <!-- <h1><a href="#rewards">Rewards</a>  YOU V2.0 </h1> -->
+        <h1>YV2</h1>
       </div>
     </div>
     <div id="heading-block">
