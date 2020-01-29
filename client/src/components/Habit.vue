@@ -65,6 +65,7 @@ export default {
       HabitService.putHabit(this.habit)
       .then( () => eventBus.$emit('habit-updated', this.habit._id))
       window.location.reload();
+      window.scrollTo(0,0);
     },
     editHabit(){
       eventBus.$emit('habit-update-visible', true)

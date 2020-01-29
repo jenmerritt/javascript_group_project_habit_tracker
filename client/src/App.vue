@@ -29,16 +29,9 @@
         <div id="header-right">
           <h1><a href="">YOU V2.0</a></h1>
           <h2><a href="#rewards-wrapper">Rewards</a></h2>
-          <h2><a href="#rewards-wrapper">Progress</a></h2>
+          <h2>Progress</h2>
         </div>
       </div>
-      <scatter-graph/>
-      <div id="header-right">
-        <h1>YOU V2.0</h1>
-        <h2><a href="#rewards-wrapper">Rewards</a></h2>
-        <!-- <h1><a href="#rewards">Rewards</a>  YOU V2.0 </h1> -->
-      </div>
-    </div>
     <div id="heading-block">
       <div id="heading-block-left">
         <h1>YOUR HABITS</h1>
@@ -47,6 +40,7 @@
         <button id="add-new-button" v-on:click="habitAddVisible = !habitAddVisible">ADD NEW</button>
       </div>
     </div>
+    <scatter-graph />
     <div id="main-wrapper">
       <habit-form  v-if="habitAddVisible" />
       <habit-update-form v-if="habitUpdateVisible"  />
@@ -62,7 +56,6 @@
       <a name="rewards"><rewards-list :level = "level"/></a>
     </div>
     </div>
-  </div>
 
 </template>
 
@@ -175,6 +168,19 @@ body{
   color: #ffffff;
   margin-right:30px;
 }
+
+#progress-nav{
+  text-decoration: none;
+  color: #ffffff;
+  margin-right:30px;
+}
+
+#progress-nav:hover{
+  text-decoration: underline;
+  color: #ffffff;
+  margin-right:30px;
+}
+
 
 #header-right h1 a:hover{
   text-decoration: none;
