@@ -31,12 +31,6 @@ db.habits.insertMany([
     points: 50,
     timeStamps: ["2019-12-20"],
     period: "Monthly"
-  },
-  {
-    name: "Don't Be a Dick",
-    points: 100,
-    timeStamps: [],
-    period: "Ad-hoc"
   }
 ]);
 

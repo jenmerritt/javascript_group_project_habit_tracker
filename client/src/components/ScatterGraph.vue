@@ -36,9 +36,7 @@ export default {
   mounted() {
     eventBus.$on('habits', habits => {
       let maximumLength = 0
-      console.log('eventBus triggering loop');
       habits.forEach(habit => {
-        console.log('loop1');
         if (maximumLength < habit.timeStamps.length){
           maximumLength = habit.timeStamps.length + 1}
 
@@ -46,7 +44,6 @@ export default {
 
           const chartDataRow = [habit.name]
           habit.timeStamps.forEach(timeStamp => {
-            console.log('loop2');
             chartDataRow.push(new Date (timeStamp))
           })
 
@@ -54,7 +51,6 @@ export default {
             let difference = maximumLength - habit.timeStamps.length
 
             for (let target = 1; target < difference; target++) {
-              console.log('loop3');
               chartDataRow.push(new Date(habit.timeStamps[0]))
             }
             this.chartData.push(chartDataRow)
