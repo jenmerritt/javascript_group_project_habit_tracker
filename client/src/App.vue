@@ -19,11 +19,11 @@
                 <div class="user-profile">
                   <h2>Jude Law</h2>
                   <h2>Current Level: {{this.level}}</h2>
-                  <h2>Goal: Stop Smoking</h2>
+                  <h2>Goal: Live a healthier life</h2>
                 </div>
             </div>
             <div v-if="getNextRewards" id="next-reward">
-              <h2>Next Reward at Level {{ getNextRewards.targetLevel }}: {{ getNextRewards.name }}</h2>
+              <h2>Level {{ getNextRewards.targetLevel }} Reward: {{ getNextRewards.name }}</h2>
             </div>
         </div>
         <div id="header-right">
@@ -345,6 +345,7 @@ body{
 
 #next-reward h2{
   margin-left: 40px;
+  font-size: 25px;
 }
 
 #new-reward-button{

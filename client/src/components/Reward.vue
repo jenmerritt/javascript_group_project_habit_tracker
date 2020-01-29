@@ -7,7 +7,7 @@
         <h2>Target Level: {{ reward.targetLevel }}</h2>
       </div>
       <div v-if="level >= reward.targetLevel" class="reward-target-level">
-        <h2>Do It!</h2>
+        <h2>Reward Achieved!</h2>
       </div>
       <div class="delete-button-wrapper">
         <button v-on:click="handleDelete" id="delete-button">X</button>
