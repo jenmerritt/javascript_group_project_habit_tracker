@@ -17,6 +17,7 @@
         <input type="radio" name="period" value="Daily" v-model="period" required/><span class="radio-title">Daily</span>
         <input type="radio" name="period" value="Weekly" v-model="period" required/><span class="radio-title">Weekly</span>
         <input type="radio" name="period" value="Monthly" v-model="period" required/><span class="radio-title">Monthly</span>
+        <input type="radio" name="period" value="Ad-hoc" v-model="period" required/><span class="radio-title">Ad-hoc</span>
       </div>
       <div class="form-item-wrapper">
         <label for="points">Assign Points:</label>
