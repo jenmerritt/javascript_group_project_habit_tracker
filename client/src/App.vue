@@ -28,6 +28,7 @@
         </div>
         <div id="header-right">
           <h1><a href="">YOU V2.0</a></h1>
+          <p id="tagline">Improving Your Life: Gamified</p>
           <h2><a href="#rewards-wrapper">Rewards</a></h2>
           <h2>Progress</h2>
         </div>
@@ -208,6 +209,12 @@ body{
   margin: 0;
 }
 
+#header-right p{
+  font-size:16px;
+  font-family: 'Bowlby One SC', cursive;
+  margin: 0 20px 0 0;
+}
+
 #header {
   display: flex;
   flex-direction: row;
@@ -274,7 +281,7 @@ body{
 }
 
 #heading-block{
-  height:120px;
+  height:100px;
   width: 100%;
   text-align: center;
   background-color: #123e7b;
@@ -296,12 +303,12 @@ body{
 #heading-block-right{
   width: 50%;
   text-align: center;
-  padding: 25px;
+  padding: 15px;
 }
 
 #add-new-button{
   background-color: #8AC926;
-  padding:20px;
+  padding: 20px;
   width:150px;
   border: none;
   font-size: 20px;
@@ -335,6 +342,10 @@ body{
 #new-reward h1{
   text-align: center;
   font-size:40px;
+}
+
+#next-reward h2{
+  margin-left: 40px;
 }
 
 #new-reward-button{

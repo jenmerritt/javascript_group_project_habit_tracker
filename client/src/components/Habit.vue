@@ -4,7 +4,7 @@
       <button id="delete-button" v-on:click="deleteHabit()">X</button>
       <div class="habit-name" v-on:click="editHabit">
         <h1>{{ habit.name }}</h1>
-        <p>{{ habit.period }}</p>
+        <p>Repeat: {{ habit.period }}</p>
       </div>
       <div v-if="checkAllowedInPeriod()" class="habit-achieved-wrap">
         <h3 v-if="!habit.timeStamps.length == 0" class="habit-achieved">Last Achieved:</h3>
@@ -91,7 +91,7 @@ export default {
 .habit-item-wrapper {
   display: flex;
   width: 100%;
-  background-color: #E8E8E8;
+  background-color: #F2F2F2;
 }
 
 .habit-name {
@@ -107,10 +107,10 @@ export default {
 }
 
 .habit-name p{
-  font-size:14px;
+  font-size:20px;
   text-align: left;
   color: #000;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .delete {

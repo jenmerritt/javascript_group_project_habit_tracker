@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <!-- <p>{{ activities[0].name}}</p> -->
-    <div>
+    <div id="chart-wrapper">
+      <h1>Progress History</h1>
       <GChart
       type="ScatterChart"
       :data="chartData"
       :options="chartOptions"
       />
     </div>
-  </div>
 </template>
 
 <script>
@@ -23,10 +21,13 @@ export default {
       activities: [],
       chartData: [],
       chartOptions: {
-        title: 'Habit Name',
+        title: 'Progress Chart of Days Your Habits Have Been Completed',
         legend: {position: 'none'},
-        colors: ['#547AA5'],
-        pointSize: 5
+        colors: ['#8AC926'],
+        pointSize: 20,
+        fontSize: 16,
+        vAxis: {title: 'Dates', gridlines: {color: "black", count: 200}},
+        height: 800
       }
     }
   },
@@ -62,13 +63,9 @@ export default {
   }
   </script>
 
-  <style>
-    #app {
-      font-family: 'Avenir', Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-align: center;
-      color: #2c3e50;
-      margin-top: 60px;
-    }
-  </style>
+<style>
+#chart-wrapper{
+  font-family: 'Play', sans-serif;
+  text-align: center;
+}
+</style>

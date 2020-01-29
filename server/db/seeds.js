@@ -29,7 +29,7 @@ db.habits.insertMany([
   {
     name: "Climb a Mountain",
     points: 50,
-    timeStamps: ["2019-12-20"],
+    timeStamps: ["2020-01-15"],
     period: "Monthly"
   }
 ]);
