@@ -1,36 +1,37 @@
 <template lang="html">
 
   <div id="app">
-    <div id="header">
-      <div id="header-left">
-        <div id="score">
-          <h1>{{this.score}}</h1>
-          <p>POINTS</p>
+      <div id="header">
+          <div id="header-left">
+            <div id="score">
+              <h1>{{this.score}}</h1>
+              <p>POINTS</p>
+            </div>
+            <div id="level">
+              <h1>LEVEL: {{this.level}}</h1>
+            </div>
+          </div>
+          <div id="header-center-wrapper">
+            <div id="header-center">
+                <div class="user-pic">
+                  <img id="user-img" src="../public/Jude.png" alt="">
+                </div>
+                <div class="user-profile">
+                  <h2>Jude Law</h2>
+                  <h2>Current Level: {{this.level}}</h2>
+                  <h2>Goal: Stop Smoking</h2>
+                </div>
+            </div>
+            <div id="next-reward">
+              <p>your next reward</p>
+            </div>
         </div>
-        <div id="level">
-          <h1>LEVEL: {{this.level}}</h1>
+        <div id="header-right">
+          <h1><a href="">YOU V2.0</a></h1>
+          <h2><a href="#rewards-wrapper">Rewards</a></h2>
+          <h2><a href="#rewards-wrapper">Progress</a></h2>
         </div>
       </div>
-      <div id="header-center">
-        <h1>User</h1>
-        <div class="user-details">
-          <div class="">
-            <img id="user-img" src="../public/Jude.png" alt="">
-          </div>
-          <div class="">
-            <h2>Name: Jude</h2>
-          </div>
-          <div class="">
-            <h2>Goal: Stop Smoking</h2>
-          </div>
-        </div>
-      </div>
-      <div id="header-right">
-        <h1>YOU V2.0</h1>
-        <h2><a href="#rewards-wrapper">Rewards</a></h2>
-        <!-- <h1><a href="#rewards">Rewards</a>  YOU V2.0 </h1> -->
-      </div>
-    </div>
     <div id="heading-block">
       <div id="heading-block-left">
         <h1>YOUR HABITS</h1>
@@ -166,6 +167,18 @@ body{
   margin-right:30px;
 }
 
+#header-right h1 a:hover{
+  text-decoration: none;
+  color: #ffffff;
+  margin-right:30px;
+}
+
+#header-right h1{
+  font-size:50px;
+  font-family: 'Bowlby One SC', cursive;
+  margin: 0;
+}
+
 #header {
   display: flex;
   flex-direction: row;
@@ -180,6 +193,32 @@ body{
   display:flex;
   flex-direction: column;
   background-color: #08bdc6;
+}
+
+#header-center-wrapper{
+  display:flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+#header-center {
+  width: 100%;
+  text-align: left;
+  display:flex;
+  flex-direction:row;
+  margin-top:30px;
+  margin-left: 50px;
+}
+
+#header-right {
+  width: 30%;
+  padding: 20px;
+  text-align: right;
+}
+
+#user-img{
+  padding:10px 10px 0 0;
+  height: 150px;
 }
 
 #score{
@@ -200,26 +239,9 @@ body{
   text-align:center;
 }
 
-#header-center {
-  width: 40%;
-  padding: 20px;
-  text-align: left;
-}
-
 #user-details {
   display:flex;
   flex-direction: row;
-}
-
-#user-img {
-  height: 120px;
-  margin: 10px 10px 0 0;
-}
-
-#header-right {
-  width: 30%;
-  padding: 20px;
-  text-align: right;
 }
 
 #heading-block{
