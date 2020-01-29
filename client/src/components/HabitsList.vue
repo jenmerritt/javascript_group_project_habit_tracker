@@ -21,11 +21,11 @@ export default {
       habits: []
     }
   },
-  watch: {
-    habits() {
-      this.fetchHabits();
-    }
-  },
+  // watch: {
+  //   habits() {
+  //     this.fetchHabits();
+  //   }
+  // },
   mounted(){
 
     this.fetchHabits();

@@ -77,7 +77,8 @@ export default {
       habitUpdateVisible: false,
       habitAddVisible: false,
       rewardAddVisible: false,
-      rewardUpdateVisible: false
+      rewardUpdateVisible: false,
+      rewards: []
     }
 
   },
@@ -133,6 +134,8 @@ export default {
     eventBus.$on('reward-form-visibility-update', update => {
       this.rewardAddVisible = false
     })
+
+    eventBus.$on('all-rewards', rewards => this.rewards = rewards)
 
   }
 }

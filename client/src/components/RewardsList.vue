@@ -34,6 +34,8 @@ export default {
       const index = this.rewards.findIndex(reward => reward._id === id);
       this.rewards.splice(index, 1)
     })
+
+    eventBus.$emit("all-rewards", this.rewards)
   },
   methods: {
 
