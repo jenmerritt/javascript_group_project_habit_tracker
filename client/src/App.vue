@@ -29,7 +29,7 @@
         <div id="header-right">
           <h1><a href="">YOU V2.0</a></h1>
           <h2><a href="#rewards-wrapper">Rewards</a></h2>
-          <h2><a href="#rewards-wrapper">Progress</a></h2>
+          <h2>Progress</h2>
         </div>
       </div>
     <div id="heading-block">
@@ -40,6 +40,7 @@
         <button id="add-new-button" v-on:click="habitAddVisible = !habitAddVisible">ADD NEW</button>
       </div>
     </div>
+    <scatter-graph />
     <div id="main-wrapper">
       <habit-form  v-if="habitAddVisible" />
       <habit-update-form v-if="habitUpdateVisible"  />
@@ -55,7 +56,6 @@
       <a name="rewards"><rewards-list :level = "level"/></a>
     </div>
     </div>
-  </div>
 
 </template>
 
@@ -66,6 +66,7 @@ import RewardsList from "@/components/RewardsList";
 import RewardForm from '@/components/RewardForm';
 import RewardUpdateForm from '@/components/RewardUpdateForm'
 import HabitUpdateForm from "@/components/HabitUpdateForm";
+import ScatterGraph from "@/components/ScatterGraph";
 import { eventBus } from "@/main";
 
 export default {
@@ -102,7 +103,8 @@ export default {
     'habit-update-form': HabitUpdateForm,
     'rewards-list': RewardsList,
     'reward-form': RewardForm,
-    'reward-update-form': RewardUpdateForm
+    'reward-update-form': RewardUpdateForm,
+    'scatter-graph': ScatterGraph
   },
   mounted() {
     eventBus.$on('habits', habits => {
@@ -169,6 +171,19 @@ body{
   color: #ffffff;
   margin-right:30px;
 }
+
+#progress-nav{
+  text-decoration: none;
+  color: #ffffff;
+  margin-right:30px;
+}
+
+#progress-nav:hover{
+  text-decoration: underline;
+  color: #ffffff;
+  margin-right:30px;
+}
+
 
 #header-right h1 a:hover{
   text-decoration: none;
