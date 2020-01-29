@@ -29,8 +29,8 @@
         <div id="header-right">
           <h1><a href="">YOU V2.0</a></h1>
           <p id="tagline">Improving Your Life: Gamified</p>
-          <h2><a href="#rewards-wrapper">Rewards</a></h2>
-          <h2>Progress</h2>
+          <h2><a href="#rewards">Rewards</a></h2>
+          <h2><a href="#progress">Progress</a></h2>
         </div>
       </div>
     <div id="heading-block">
@@ -41,7 +41,6 @@
         <button id="add-new-button" v-on:click="habitAddVisible = !habitAddVisible">ADD NEW</button>
       </div>
     </div>
-    <scatter-graph />
     <div id="main-wrapper">
       <habit-form  v-if="habitAddVisible" />
       <habit-update-form v-if="habitUpdateVisible"  />
@@ -49,13 +48,14 @@
     </div>
     <div id="rewards-header">
       <div id="new-reward">
-        <h1>YOUR REWARDS</h1>
+        <a name="rewards"><h1>YOUR REWARDS</h1></a>
         <button id="new-reward-button" v-on:click="rewardAddVisible = !rewardAddVisible">ADD NEW</button>
       </div>
       <reward-form v-if="rewardAddVisible" />
       <reward-update-form v-if="rewardUpdateVisible"  />
-      <a name="rewards"><rewards-list :level = "level"/></a>
+      <rewards-list :level="level"/>
     </div>
+    <a name="progress"><scatter-graph /></a>
     </div>
 
 </template>
@@ -144,7 +144,6 @@ export default {
     })
 
     eventBus.$on('all-rewards', rewards => this.rewards = rewards)
-
   },
   methods: {
     // getNextRewards() {

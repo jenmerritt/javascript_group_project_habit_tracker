@@ -1,7 +1,7 @@
 <template lang="html">
   <div id="rewards-wrapper">
     <ul id="reward-list">
-      <reward v-for="reward in rewards" :reward="reward" :level = "level"></reward>
+      <reward v-for="reward in rewards" :reward="reward" :level="level"></reward>
     </ul>
   </div>
 </template>

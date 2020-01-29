@@ -67,5 +67,6 @@ export default {
 #chart-wrapper{
   font-family: 'Play', sans-serif;
   text-align: center;
+  margin-top: 300px;
 }
 </style>
