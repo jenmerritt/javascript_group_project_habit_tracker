@@ -1,16 +1,17 @@
 <template lang="html">
   <li class="habit-item">
     <div class="habit-item-wrapper">
-      <p class="delete" v-on:click="deleteHabit()">Delete Habit: ❌</p>
+      <button id="delete-button" v-on:click="deleteHabit()">X</button>
       <div class="habit-name" v-on:click="editHabit">
-        <h2>{{ habit.name }}</h2>
+        <h1>{{ habit.name }}</h1>
+        <p>{{ habit.period }}</p>
       </div>
-      <div v-if="checkAllowedInPeriod()">
+      <div v-if="checkAllowedInPeriod()" class="habit-achieved-wrap">
         <h3 v-if="!habit.timeStamps.length == 0" class="habit-achieved">Last Achieved:</h3>
         <h2 class="habit-timestamp">{{latestTimestamp()}}</h2>
       </div>
       <div v-if="!checkAllowedInPeriod()" class="habit-points">
-        <button v-on:click="updateTimeStamps" id="adjust-score-button">Adjust Score Icon</button>
+        <button v-on:click="updateTimeStamps" id="adjust-score-button">{{ habit.points }}</button>
       </div>
     </div>
   </li>
@@ -24,6 +25,10 @@ import moment from 'moment';
 
 export default {
   name: 'habit',
+  data(){
+    return{
+    }
+  },
   props: ['habit'],
   methods:{
     moment() {
@@ -60,6 +65,7 @@ export default {
       window.scrollTo(0,0);
     },
     editHabit(){
+      eventBus.$emit('habit-update-visible', true)
       eventBus.$emit('edit-habit', this.habit)
     },
     deleteHabit() {
@@ -90,18 +96,23 @@ export default {
   padding: 30px;
 }
 
-.habit-name h2{
-  font-size: 25px;
+.habit-name h1{
+  font-size: 30px;
   text-align: left;
   color: #0a1831;
+  margin: 0;
+}
+
+.habit-name p{
+  font-size:14px;
+  text-align: left;
+  color: #000;
+  margin-top: 10px;
 }
 
 .delete {
   color: black;
-  text-decoration: underline;
-  background-color: #4BC0D9;
   font-size: 10px;
-  border: 1px solid lightgrey;
   max-height: 30px;
 }
 
@@ -123,6 +134,10 @@ export default {
   text-align: center;
 }
 
+.habit-achieved-wrap{
+    padding-right: 30px;
+}
+
 .habit-timestamp{
   color: goldenrod;
   text-align: center;
@@ -133,7 +148,7 @@ export default {
   padding:20px;
   width:150px;
   border: none;
-  font-size: 20px;
+  font-size: 30px;
   color: green;
 }
 
@@ -142,8 +157,28 @@ export default {
   padding:17px;
   width:150px;
   border: 3px solid green;
-  font-size: 20px;
+  font-size: 30px;
   color: green;
+  cursor:pointer;
+}
+
+#delete-button{
+  background-color: #702632;
+  padding:8px;
+  width:25px;
+  border: none;
+  font-size: 12px;
+  color: #fff;
+  height: 20%;
+}
+
+#delete-button:hover {
+  background-color: #702632;
+  padding:5px;
+  width:25px;
+  border: 3px solid #8B0000;
+  font-size: 12px;
+  color: #fff;
   cursor:pointer;
 }
 

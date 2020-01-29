@@ -1,8 +1,5 @@
 <template lang="html">
   <div id="rewards-wrapper">
-    <div id="new-reward">
-      <button id="new-reward-button">NEW REWARD</button>
-    </div>
     <ul id="reward-list">
       <reward v-for="reward in rewards" :reward="reward" :level = "level"></reward>
     </ul>
@@ -39,11 +36,15 @@ export default {
     })
   },
   methods: {
+
     fetchRewards() {
       RewardService.getRewards()
       .then(rewards => this.rewards = rewards)
     }
+
+
   },
+
   components: {
     'reward': Reward
   }
@@ -51,4 +52,11 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+#reward-list {
+  list-style-type: none;
+  margin-right:40px;
+}
+
+
 </style>
