@@ -25,6 +25,7 @@
           </div>
         </div>
       </div>
+      <scatter-graph/>
       <div id="header-right">
         <h1>YOU V2.0</h1>
         <h2><a href="#rewards-wrapper">Rewards</a></h2>
@@ -65,6 +66,7 @@ import RewardsList from "@/components/RewardsList";
 import RewardForm from '@/components/RewardForm';
 import RewardUpdateForm from '@/components/RewardUpdateForm'
 import HabitUpdateForm from "@/components/HabitUpdateForm";
+import ScatterGraph from "@/components/ScatterGraph";
 import { eventBus } from "@/main";
 
 export default {
@@ -100,7 +102,8 @@ export default {
     'habit-update-form': HabitUpdateForm,
     'rewards-list': RewardsList,
     'reward-form': RewardForm,
-    'reward-update-form': RewardUpdateForm
+    'reward-update-form': RewardUpdateForm,
+    'scatter-graph': ScatterGraph
   },
   mounted() {
     eventBus.$on('habits', habits => {
