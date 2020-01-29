@@ -36,7 +36,7 @@ export default {
 
       const payload = {
         name: this.name,
-        targetLevel: this.targetLevel
+        targetLevel: Number(this.targetLevel)
       }
 
       RewardService.postReward(payload)

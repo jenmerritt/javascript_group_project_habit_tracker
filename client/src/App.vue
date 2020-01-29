@@ -22,8 +22,8 @@
                   <h2>Goal: Stop Smoking</h2>
                 </div>
             </div>
-            <div v-if="getNextRewards()" id="next-reward">
-              <p>{{ getNextRewards().name }}</p>
+            <div v-if="getNextRewards" id="next-reward">
+              <h2>Next Reward at Level {{ getNextRewards.targetLevel }}: {{ getNextRewards.name }}</h2>
             </div>
         </div>
         <div id="header-right">
@@ -95,7 +95,12 @@ export default {
   computed:{
     score(){
       return this.pointsTotal
+    },
+    getNextRewards() {
+      const nextRewards = this.rewards.filter(reward => reward.targetLevel === this.level + 1)
+      return nextRewards[0]
     }
+
   },
   components: {
     'habits-list': HabitsList,
@@ -141,10 +146,10 @@ export default {
 
   },
   methods: {
-    getNextRewards() {
-      const nextRewards = this.rewards.filter(reward => reward.targetLevel === this.level + 1)
-      return nextRewards[0]
-    }
+    // getNextRewards() {
+    //   const nextRewards = this.rewards.filter(reward => reward.targetLevel === this.level + 1)
+    //   return nextRewards[0]
+    // }
   }
 }
 </script>
