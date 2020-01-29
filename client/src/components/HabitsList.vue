@@ -21,11 +21,6 @@ export default {
       habits: []
     }
   },
-  // watch: {
-  //   habits() {
-  //     this.fetchHabits();
-  //   }
-  // },
   mounted(){
 
     this.fetchHabits();
