@@ -47,11 +47,13 @@ export default {
         .filter(day => new Date(day).getMonth() === today.getMonth())
         return daysAchieved.length
       }
-      else {
+      else if (this.habit.period === 'Weekly') {
         const endOfWeekPeriod = new Date(this.moment().add(7, 'days').calendar());
         const daysAchieved = this.habit.timeStamps.filter(day => endOfWeekPeriod > today)
         return daysAchieved.length
       }
+      else if (this.habit.period === 'Ad-hoc')
+        return false
     },
     latestTimestamp() {
       const lastTimestamp = this.habit.timeStamps[this.habit.timeStamps.length-1]
