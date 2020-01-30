@@ -9,6 +9,12 @@ db.habits.insertMany([
     period: "Daily"
   },
   {
+      name: "Take dog for extra walk",
+      points: 10,
+      timeStamps: ["2020-01-13", "2020-01-17", "2020-01-20", "2020-01-26"],
+      period: "Ad-hoc"
+    },
+  {
     name: "Drink 3l Water",
     points: 10,
     timeStamps: ["2020-01-13", "2020-01-14", "2020-01-15", "2020-01-16", "2020-01-17", "2020-01-20", "2020-01-22", "2020-01-25", "2020-01-26", "2020-01-27"],
@@ -20,12 +26,6 @@ db.habits.insertMany([
     timeStamps: [],
     period: "Daily"
   },
-  {
-      name: "Take dog for extra walk",
-      points: 10,
-      timeStamps: ["2020-01-13", "2020-01-17", "2020-01-20", "2020-01-26"],
-      period: "Ad-hoc"
-    },
   {
     name: "Play Football",
     points: 25,
