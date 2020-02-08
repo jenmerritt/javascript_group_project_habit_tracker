@@ -14,10 +14,10 @@
           <div id="header-center-wrapper">
             <div id="header-center">
                 <div class="user-pic">
-                  <img id="user-img" src="../public/Jude.png" alt="">
+                  <img id="user-img" src="../public/user.png" alt="">
                 </div>
                 <div class="user-profile">
-                  <h2>Jude Law</h2>
+                  <h2>Jane Smith</h2>
                   <h2>Current Level: {{this.level}}</h2>
                   <h2>Goal: Live a healthier life</h2>
                 </div>
@@ -252,7 +252,7 @@ body{
 }
 
 #user-img{
-  padding:10px 10px 0 0;
+  margin:10px 10px 0 0;
   height: 150px;
 }
 
