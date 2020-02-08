@@ -1,4 +1,4 @@
-#Habit Tracker App
+# Habit Tracker App
 
 This project was completed during my time studying at CodeClan. The project was as part of a group of 4 and was based on JavaScript.
 
